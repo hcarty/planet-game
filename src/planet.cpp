@@ -16,7 +16,7 @@
 #ifdef __orxMSVC__
 
 /* Requesting high performance dedicated GPU on hybrid laptops */
-__declspec(dllexport) unsigned long NvOptimusEnablement        = 1;
+__declspec(dllexport) unsigned long NvOptimusEnablement = 1;
 __declspec(dllexport) int AmdPowerXpressRequestHighPerformance = 1;
 
 #endif // __orxMSVC__
@@ -26,10 +26,23 @@ __declspec(dllexport) int AmdPowerXpressRequestHighPerformance = 1;
 void planet::Update(const orxCLOCK_INFO &_rstInfo)
 {
   // Should quit?
-  if(orxInput_IsActive("Quit"))
+  if (orxInput_IsActive("Quit"))
   {
     // Send close event
     orxEvent_SendShort(orxEVENT_TYPE_SYSTEM, orxSYSTEM_EVENT_CLOSE);
+  }
+  else
+  {
+    if (orxInput_HasBeenActivated("Drop"))
+    {
+      orxConfig_PushSection("Runtime");
+      orxVECTOR position = orxVECTOR_0;
+      orxConfig_GetVector("DropperPosition", &position);
+      orxConfig_PopSection();
+
+      auto planet = orxObject_CreateFromConfig("Planet");
+      orxObject_SetWorldPosition(planet, &position);
+    }
   }
 }
 
@@ -37,16 +50,11 @@ void planet::Update(const orxCLOCK_INFO &_rstInfo)
  */
 orxSTATUS planet::Init()
 {
-  // Display a small hint in console
-  orxLOG("\n* This template project creates a simple scene"
-  "\n* You can play with the config parameters in ../data/config/planet.ini"
-  "\n* After changing them, relaunch the executable to see the changes.");
-
   // Create the scene
   CreateObject("Scene");
 
   // Is processing a new bundle?
-  if(orxBundle_IsProcessing())
+  if (orxBundle_IsProcessing())
   {
     // Done!
     return orxSTATUS_SUCCESS;
