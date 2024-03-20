@@ -26,7 +26,7 @@ ifeq ($(config),debuguniv64)
   DEFINES   += -D__orxDEBUG__
   INCLUDES  += -I$(ORX)/include -I../../../include/Scroll -I../../../include
   ALL_CPPFLAGS  += $(CPPFLAGS) -MMD -MP $(DEFINES) $(INCLUDES)
-  ALL_CFLAGS    += $(CFLAGS) $(ALL_CPPFLAGS) -ffast-math -g -arch x86_64 -arch arm64 -stdlib=libc++ -gdwarf-2 -Wno-unused-function -Wno-write-strings
+  ALL_CFLAGS    += $(CFLAGS) $(ALL_CPPFLAGS) -ffast-math -g -arch x86_64 -arch arm64 -stdlib=libc++ -gdwarf-2 -Wno-unused-function -Wno-write-strings -std=c++20
   ALL_CXXFLAGS  += $(CXXFLAGS) $(ALL_CFLAGS) -fno-exceptions
   ALL_RESFLAGS  += $(RESFLAGS) $(DEFINES) $(INCLUDES)
   ALL_LDFLAGS   += $(LDFLAGS) -L$(ORX)/lib/dynamic -L. -arch x86_64 -arch arm64 -stdlib=libc++ -dead_strip
@@ -50,7 +50,7 @@ ifeq ($(config),profileuniv64)
   DEFINES   += -D__orxPROFILER__
   INCLUDES  += -I$(ORX)/include -I../../../include/Scroll -I../../../include
   ALL_CPPFLAGS  += $(CPPFLAGS) -MMD -MP $(DEFINES) $(INCLUDES)
-  ALL_CFLAGS    += $(CFLAGS) $(ALL_CPPFLAGS) -ffast-math -g -O2 -arch x86_64 -arch arm64 -stdlib=libc++ -gdwarf-2 -Wno-unused-function -Wno-write-strings
+  ALL_CFLAGS    += $(CFLAGS) $(ALL_CPPFLAGS) -ffast-math -g -O2 -arch x86_64 -arch arm64 -stdlib=libc++ -gdwarf-2 -Wno-unused-function -Wno-write-strings -std=c++20
   ALL_CXXFLAGS  += $(CXXFLAGS) $(ALL_CFLAGS) -fno-exceptions -fno-rtti
   ALL_RESFLAGS  += $(RESFLAGS) $(DEFINES) $(INCLUDES)
   ALL_LDFLAGS   += $(LDFLAGS) -L$(ORX)/lib/dynamic -L. -arch x86_64 -arch arm64 -stdlib=libc++ -dead_strip
@@ -74,7 +74,7 @@ ifeq ($(config),releaseuniv64)
   DEFINES   +=
   INCLUDES  += -I$(ORX)/include -I../../../include/Scroll -I../../../include
   ALL_CPPFLAGS  += $(CPPFLAGS) -MMD -MP $(DEFINES) $(INCLUDES)
-  ALL_CFLAGS    += $(CFLAGS) $(ALL_CPPFLAGS) -ffast-math -g -O2 -arch x86_64 -arch arm64 -stdlib=libc++ -gdwarf-2 -Wno-unused-function -Wno-write-strings
+  ALL_CFLAGS    += $(CFLAGS) $(ALL_CPPFLAGS) -ffast-math -g -O2 -arch x86_64 -arch arm64 -stdlib=libc++ -gdwarf-2 -Wno-unused-function -Wno-write-strings -std=c++20
   ALL_CXXFLAGS  += $(CXXFLAGS) $(ALL_CFLAGS) -fno-exceptions -fno-rtti
   ALL_RESFLAGS  += $(RESFLAGS) $(DEFINES) $(INCLUDES)
   ALL_LDFLAGS   += $(LDFLAGS) -L$(ORX)/lib/dynamic -L. -arch x86_64 -arch arm64 -stdlib=libc++ -dead_strip
@@ -98,7 +98,7 @@ ifeq ($(config),bundleuniv64)
   DEFINES   +=
   INCLUDES  += -I$(ORX)/include -I../../../include/Scroll -I../../../include
   ALL_CPPFLAGS  += $(CPPFLAGS) -MMD -MP $(DEFINES) $(INCLUDES)
-  ALL_CFLAGS    += $(CFLAGS) $(ALL_CPPFLAGS) -ffast-math -g -O2 -arch x86_64 -arch arm64 -stdlib=libc++ -gdwarf-2 -Wno-unused-function -Wno-write-strings
+  ALL_CFLAGS    += $(CFLAGS) $(ALL_CPPFLAGS) -ffast-math -g -O2 -arch x86_64 -arch arm64 -stdlib=libc++ -gdwarf-2 -Wno-unused-function -Wno-write-strings -std=c++20
   ALL_CXXFLAGS  += $(CXXFLAGS) $(ALL_CFLAGS) -fno-exceptions -fno-rtti
   ALL_RESFLAGS  += $(RESFLAGS) $(DEFINES) $(INCLUDES)
   ALL_LDFLAGS   += $(LDFLAGS) -L$(ORX)/lib/dynamic -L. -arch x86_64 -arch arm64 -stdlib=libc++ -dead_strip
@@ -122,7 +122,7 @@ ifeq ($(config),debug64)
   DEFINES   += -D__orxDEBUG__
   INCLUDES  += -I$(ORX)/include -I../../../include/Scroll -I../../../include
   ALL_CPPFLAGS  += $(CPPFLAGS) -MMD -MP $(DEFINES) $(INCLUDES)
-  ALL_CFLAGS    += $(CFLAGS) $(ALL_CPPFLAGS) -ffast-math -g -m64 -stdlib=libc++ -gdwarf-2 -Wno-unused-function -Wno-write-strings
+  ALL_CFLAGS    += $(CFLAGS) $(ALL_CPPFLAGS) -ffast-math -g -m64 -stdlib=libc++ -gdwarf-2 -Wno-unused-function -Wno-write-strings -std=c++20
   ALL_CXXFLAGS  += $(CXXFLAGS) $(ALL_CFLAGS) -fno-exceptions
   ALL_RESFLAGS  += $(RESFLAGS) $(DEFINES) $(INCLUDES)
   ALL_LDFLAGS   += $(LDFLAGS) -L$(ORX)/lib/dynamic -L. -m64 -L/usr/lib64 -stdlib=libc++ -dead_strip
@@ -146,7 +146,7 @@ ifeq ($(config),profile64)
   DEFINES   += -D__orxPROFILER__
   INCLUDES  += -I$(ORX)/include -I../../../include/Scroll -I../../../include
   ALL_CPPFLAGS  += $(CPPFLAGS) -MMD -MP $(DEFINES) $(INCLUDES)
-  ALL_CFLAGS    += $(CFLAGS) $(ALL_CPPFLAGS) -ffast-math -g -O2 -m64 -stdlib=libc++ -gdwarf-2 -Wno-unused-function -Wno-write-strings
+  ALL_CFLAGS    += $(CFLAGS) $(ALL_CPPFLAGS) -ffast-math -g -O2 -m64 -stdlib=libc++ -gdwarf-2 -Wno-unused-function -Wno-write-strings -std=c++20
   ALL_CXXFLAGS  += $(CXXFLAGS) $(ALL_CFLAGS) -fno-exceptions -fno-rtti
   ALL_RESFLAGS  += $(RESFLAGS) $(DEFINES) $(INCLUDES)
   ALL_LDFLAGS   += $(LDFLAGS) -L$(ORX)/lib/dynamic -L. -m64 -L/usr/lib64 -stdlib=libc++ -dead_strip
@@ -170,7 +170,7 @@ ifeq ($(config),release64)
   DEFINES   +=
   INCLUDES  += -I$(ORX)/include -I../../../include/Scroll -I../../../include
   ALL_CPPFLAGS  += $(CPPFLAGS) -MMD -MP $(DEFINES) $(INCLUDES)
-  ALL_CFLAGS    += $(CFLAGS) $(ALL_CPPFLAGS) -ffast-math -g -O2 -m64 -stdlib=libc++ -gdwarf-2 -Wno-unused-function -Wno-write-strings
+  ALL_CFLAGS    += $(CFLAGS) $(ALL_CPPFLAGS) -ffast-math -g -O2 -m64 -stdlib=libc++ -gdwarf-2 -Wno-unused-function -Wno-write-strings -std=c++20
   ALL_CXXFLAGS  += $(CXXFLAGS) $(ALL_CFLAGS) -fno-exceptions -fno-rtti
   ALL_RESFLAGS  += $(RESFLAGS) $(DEFINES) $(INCLUDES)
   ALL_LDFLAGS   += $(LDFLAGS) -L$(ORX)/lib/dynamic -L. -m64 -L/usr/lib64 -stdlib=libc++ -dead_strip
@@ -194,7 +194,7 @@ ifeq ($(config),bundle64)
   DEFINES   +=
   INCLUDES  += -I$(ORX)/include -I../../../include/Scroll -I../../../include
   ALL_CPPFLAGS  += $(CPPFLAGS) -MMD -MP $(DEFINES) $(INCLUDES)
-  ALL_CFLAGS    += $(CFLAGS) $(ALL_CPPFLAGS) -ffast-math -g -O2 -m64 -stdlib=libc++ -gdwarf-2 -Wno-unused-function -Wno-write-strings
+  ALL_CFLAGS    += $(CFLAGS) $(ALL_CPPFLAGS) -ffast-math -g -O2 -m64 -stdlib=libc++ -gdwarf-2 -Wno-unused-function -Wno-write-strings -std=c++20
   ALL_CXXFLAGS  += $(CXXFLAGS) $(ALL_CFLAGS) -fno-exceptions -fno-rtti
   ALL_RESFLAGS  += $(RESFLAGS) $(DEFINES) $(INCLUDES)
   ALL_LDFLAGS   += $(LDFLAGS) -L$(ORX)/lib/dynamic -L. -m64 -L/usr/lib64 -stdlib=libc++ -dead_strip

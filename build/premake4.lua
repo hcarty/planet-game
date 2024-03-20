@@ -171,7 +171,8 @@ solution "planet"
             "-stdlib=libc++",
             "-gdwarf-2",
             "-Wno-unused-function",
-            "-Wno-write-strings"
+            "-Wno-write-strings",
+            "-std=c++20"
         }
         linkoptions
         {
@@ -268,12 +269,12 @@ project "planet"
     vpaths
     {
         ["inline"] = {"**.inl"},
-        ["bundle"] = {"**.inc"},
+["bundle"] = {"**.inc"},
         ["build"] = {"**premake4.lua"},
         ["config"] = {"**.ini"}
     }
 
-    configuration {"*Bundle*"}
+configuration {"*Bundle*"}
         debugargs {"-b", "planet.obr"}
 
 
