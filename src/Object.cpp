@@ -103,7 +103,7 @@ void game::Dropper::OnDelete()
 
 void game::Dropper::Update(const orxCLOCK_INFO &_rstInfo)
 {
-  const orxFLOAT MIN_DROP_WAIT_TIME = 1.0;
+  const orxFLOAT MIN_DROP_WAIT_TIME = 0.5;
 
   // Create a planet if it's been long enough since we dropped one
   if (!latest)
@@ -136,6 +136,7 @@ void game::Dropper::Update(const orxCLOCK_INFO &_rstInfo)
     orxConfig_PopSection();
 
     orxObject_SetCustomGravity(latest, &gravity);
+    orxObject_SetSpeed(latest, &orxVECTOR_0);
     latest = orxNULL;
   }
 
