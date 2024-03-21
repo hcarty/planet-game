@@ -31,19 +31,6 @@ void planet::Update(const orxCLOCK_INFO &_rstInfo)
     // Send close event
     orxEvent_SendShort(orxEVENT_TYPE_SYSTEM, orxSYSTEM_EVENT_CLOSE);
   }
-  else
-  {
-    if (orxInput_HasBeenActivated("Drop"))
-    {
-      orxConfig_PushSection("Runtime");
-      orxVECTOR position = orxVECTOR_0;
-      orxConfig_GetVector("DropperPosition", &position);
-      orxConfig_PopSection();
-
-      auto planet = orxObject_CreateFromConfig("Planet");
-      orxObject_SetWorldPosition(planet, &position);
-    }
-  }
 }
 
 /** Init function, it is called when all orx's modules have been initialized
@@ -86,8 +73,10 @@ void planet::Exit()
  */
 void planet::BindObjects()
 {
-  // Bind the Object class to the Object config section
+  // Bind Scroll classes to matching config sections
+  ScrollBindObject<game::Dropper>("Dropper");
   ScrollBindObject<Object>("Object");
+  ScrollBindObject<game::Planet>("Planet");
 }
 
 /** Bootstrap function, it is called before config is initialized, allowing for early resource storage definitions
