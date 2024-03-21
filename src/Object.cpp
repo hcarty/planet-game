@@ -103,21 +103,56 @@ void game::Dropper::OnDelete()
 
 void game::Dropper::Update(const orxCLOCK_INFO &_rstInfo)
 {
+  const orxFLOAT MIN_DROP_WAIT_TIME = 1.0;
+
+  // Create a planet if it's been long enough since we dropped one
+  if (!latest)
+  {
+    dtSinceDrop += _rstInfo.fDT;
+    if (dtSinceDrop > MIN_DROP_WAIT_TIME)
+    {
+      dtSinceDrop = 0.0;
+      CreatePlanet();
+    }
+
+    return;
+  }
+
+  // Movement
   auto xDirection = orxInput_GetValue("Right") - orxInput_GetValue("Left");
   orxVECTOR speed = {xDirection, 0, 0};
-  orxVector_Mulf(&speed, &speed, 100);
-  SetSpeed(speed);
+  orxVector_Mulf(&speed, &speed, 300);
+  orxObject_SetSpeed(latest, &speed);
+  // SetSpeed(speed);
 
-  if (orxInput_HasBeenActivated("Drop"))
+  // Drop current planet if we have one
+  if (latest && orxInput_HasBeenActivated("Drop"))
   {
-    orxVECTOR position = orxVECTOR_0;
-    GetPosition(position, orxTRUE);
+    orxConfig_PushSection(orxObject_GetName(latest));
+    orxConfig_PushSection(orxConfig_GetString("Body"));
+    orxVECTOR gravity = orxVECTOR_0;
+    orxConfig_GetVector("CustomGravity", &gravity);
+    orxConfig_PopSection();
+    orxConfig_PopSection();
 
-    PushConfigSection();
-    auto planet = orxObject_CreateFromConfig(orxConfig_GetString("Drop"));
-    PopConfigSection();
-    orxObject_SetWorldPosition(planet, &position);
+    orxObject_SetCustomGravity(latest, &gravity);
+    latest = orxNULL;
   }
 
   Object::Update(_rstInfo);
+}
+
+void game::Dropper::CreatePlanet()
+{
+  orxASSERT(latest == orxNULL);
+
+  orxVECTOR position = orxVECTOR_0;
+  GetPosition(position, orxTRUE);
+
+  PushConfigSection();
+  latest = orxObject_CreateFromConfig(orxConfig_GetString("Drop"));
+  PopConfigSection();
+  orxObject_SetWorldPosition(latest, &position);
+
+  orxObject_SetCustomGravity(latest, &orxVECTOR_0);
 }

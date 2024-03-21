@@ -38,5 +38,8 @@ namespace game
     void Update(const orxCLOCK_INFO &_rstInfo);
 
   private:
+    void CreatePlanet();
+    orxOBJECT *latest{orxNULL};
+    orxFLOAT dtSinceDrop{0.0};
   };
 }
