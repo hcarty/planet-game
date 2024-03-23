@@ -66,7 +66,7 @@ void game::Planet::OnCollide(ScrollObject *_poCollider, orxBODY_PART *_pstPart, 
   auto stay = orxConfig_GetBool("Stay");
   PopConfigSection();
 
-  if (GetLifeTime() != 0 && !stay)
+  if (!stay && GetLifeTime() != 0 && _poCollider->GetLifeTime() != 0)
   {
     // Both objects go away!
     SetLifeTime(0);
