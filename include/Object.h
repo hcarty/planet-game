@@ -39,6 +39,7 @@ namespace game
 
   private:
     void CreatePlanet();
+    bool first{true};
     orxOBJECT *latest{orxNULL};
     orxFLOAT dtSinceDrop{0.0};
   };

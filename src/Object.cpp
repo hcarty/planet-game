@@ -103,14 +103,17 @@ void game::Dropper::OnDelete()
 
 void game::Dropper::Update(const orxCLOCK_INFO &_rstInfo)
 {
-  const orxFLOAT MIN_DROP_WAIT_TIME = 0.5;
+  PushConfigSection();
+  const auto min_drop_wait_time = orxConfig_GetFloat("MinDropWait");
+  PopConfigSection();
 
   // Create a planet if it's been long enough since we dropped one
   if (!latest)
   {
     dtSinceDrop += _rstInfo.fDT;
-    if (dtSinceDrop > MIN_DROP_WAIT_TIME)
+    if (first || dtSinceDrop > min_drop_wait_time)
     {
+      first = false;
       dtSinceDrop = 0.0;
       CreatePlanet();
     }
