@@ -103,14 +103,39 @@ void game::Dropper::OnDelete()
 
 void game::Dropper::Update(const orxCLOCK_INFO &_rstInfo)
 {
+  orxVECTOR speed = orxVECTOR_0;
+
   PushConfigSection();
-  const auto min_drop_wait_time = orxConfig_GetFloat("MinDropWait");
+  const auto minDropWaitTime = orxConfig_GetFloat("MinDropWait");
+  const auto minX = orxConfig_GetFloat("MinX");
+  const auto maxX = orxConfig_GetFloat("MaxX");
+  orxVECTOR leftSpeed = orxVECTOR_0;
+  orxVECTOR rightSpeed = orxVECTOR_0;
+  orxConfig_GetVector("MaxSpeed", &rightSpeed);
+  orxVector_Mulf(&leftSpeed, &rightSpeed, -1);
   PopConfigSection();
 
+  // Dropper position
+  orxVECTOR position = orxVECTOR_0;
+  GetPosition(position, orxTRUE);
+
   // Dropper movement
-  auto xDirection = orxInput_GetValue("Right") - orxInput_GetValue("Left");
-  orxVECTOR speed = {xDirection, 0, 0};
-  orxVector_Mulf(&speed, &speed, 300);
+  if (position.fX < minX)
+  {
+    // Stay inside bounds
+    speed = rightSpeed;
+  }
+  else if (position.fX > maxX)
+  {
+    // Stay inside bounds
+    speed = leftSpeed;
+  }
+  else
+  {
+    // User controls
+    auto xDirection = orxInput_GetValue("Right") - orxInput_GetValue("Left");
+    orxVector_Mulf(&speed, &rightSpeed, xDirection);
+  }
   SetSpeed(speed);
 
   // Create a planet if it's been long enough since we dropped one
@@ -118,7 +143,7 @@ void game::Dropper::Update(const orxCLOCK_INFO &_rstInfo)
   {
 
     dtSinceDrop += _rstInfo.fDT;
-    if (first || dtSinceDrop > min_drop_wait_time)
+    if (first || dtSinceDrop > minDropWaitTime)
     {
       first = false;
       dtSinceDrop = 0.0;
