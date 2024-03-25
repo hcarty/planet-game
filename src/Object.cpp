@@ -107,9 +107,16 @@ void game::Dropper::Update(const orxCLOCK_INFO &_rstInfo)
   const auto min_drop_wait_time = orxConfig_GetFloat("MinDropWait");
   PopConfigSection();
 
+  // Dropper movement
+  auto xDirection = orxInput_GetValue("Right") - orxInput_GetValue("Left");
+  orxVECTOR speed = {xDirection, 0, 0};
+  orxVector_Mulf(&speed, &speed, 300);
+  SetSpeed(speed);
+
   // Create a planet if it's been long enough since we dropped one
   if (!latest)
   {
+
     dtSinceDrop += _rstInfo.fDT;
     if (first || dtSinceDrop > min_drop_wait_time)
     {
@@ -122,11 +129,7 @@ void game::Dropper::Update(const orxCLOCK_INFO &_rstInfo)
   }
 
   // Movement
-  auto xDirection = orxInput_GetValue("Right") - orxInput_GetValue("Left");
-  orxVECTOR speed = {xDirection, 0, 0};
-  orxVector_Mulf(&speed, &speed, 300);
   orxObject_SetSpeed(latest, &speed);
-  // SetSpeed(speed);
 
   // Drop current planet if we have one
   if (latest && orxInput_HasBeenActivated("Drop"))
