@@ -24,6 +24,11 @@ void Object::Update(const orxCLOCK_INFO &_rstInfo)
 
 namespace
 {
+  bool EqualContent(const orxSTRING a, const orxSTRING b)
+  {
+    return orxString_Compare(a, b) == 0;
+  }
+
   /// @brief Check if object model (config) names are equal
   /// @param a First object to compare
   /// @param b Second object to compare
@@ -35,7 +40,7 @@ namespace
       return false;
     }
 
-    return orxString_Compare(a->GetModelName(), b->GetModelName()) == 0;
+    return EqualContent(a->GetModelName(), b->GetModelName());
   }
 }
 
@@ -51,17 +56,43 @@ void game::Planet::OnDelete()
 
 void game::Planet::Update(const orxCLOCK_INFO &_rstInfo)
 {
+  // Add time if we're in contact with the arena top
+  if (touchingArenaTop.has_value())
+  {
+    touchingArenaTop = *touchingArenaTop + _rstInfo.fDT;
+    if (*touchingArenaTop > 2.0)
+    {
+      orxLOG("TODO: Set game over");
+      SetLifeTime(0);
+    }
+  }
+
   Object::Update(_rstInfo);
 }
 
 void game::Planet::OnCollide(ScrollObject *_poCollider, orxBODY_PART *_pstPart, orxBODY_PART *_pstColliderPart, const orxVECTOR &_rvPosition, const orxVECTOR &_rvNormal)
 {
-  if (!EqualModelName(this, _poCollider))
+  if (EqualModelName(this, _poCollider))
   {
-    // Nothing to do if this isn't a planet to planet collision
-    return;
+    OnPlanetCollide(_poCollider);
   }
 
+  if (EqualContent(_poCollider->GetModelName(), "ArenaTop"))
+  {
+    OnArenaTopCollide();
+  }
+}
+
+void game::Planet::OnSeparate(ScrollObject *_poCollider, orxBODY_PART *_pstPart, orxBODY_PART *_pstColliderPart)
+{
+  if (EqualContent(_poCollider->GetModelName(), "ArenaTop"))
+  {
+    OnArenaTopSeparate();
+  }
+}
+
+void game::Planet::OnPlanetCollide(ScrollObject *_poCollider)
+{
   PushConfigSection();
   auto stay = orxConfig_GetBool("Stay");
   PopConfigSection();
@@ -89,6 +120,18 @@ void game::Planet::OnCollide(ScrollObject *_poCollider, orxBODY_PART *_pstPart, 
     }
     PopConfigSection();
   }
+}
+
+void game::Planet::OnArenaTopCollide()
+{
+  // Start counting time in contact
+  touchingArenaTop = 0.0;
+}
+
+void game::Planet::OnArenaTopSeparate()
+{
+  // Clear current counter
+  touchingArenaTop.reset();
 }
 
 void game::Dropper::OnCreate()

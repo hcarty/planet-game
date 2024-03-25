@@ -1,5 +1,7 @@
 #pragma once
 
+#include <optional>
+
 #include "planet.h"
 
 /** Object Class
@@ -25,8 +27,14 @@ namespace game
     void OnDelete();
     void Update(const orxCLOCK_INFO &_rstInfo);
     void OnCollide(ScrollObject *_poCollider, orxBODY_PART *_pstPart, orxBODY_PART *_pstColliderPart, const orxVECTOR &_rvPosition, const orxVECTOR &_rvNormal);
+    void OnSeparate(ScrollObject *_poCollider, orxBODY_PART *_pstPart, orxBODY_PART *_pstColliderPart);
 
   private:
+    std::optional<orxFLOAT> touchingArenaTop{};
+
+    void OnPlanetCollide(ScrollObject *_poCollider);
+    void OnArenaTopCollide();
+    void OnArenaTopSeparate();
   };
 
   class Dropper : public Object
