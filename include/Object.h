@@ -19,6 +19,15 @@ private:
 
 namespace game
 {
+  enum class Event : orxENUM
+  {
+    GameOver,
+  };
+
+  void SendEvent(Event event);
+  void RegisterEventHandler(Event id, orxEVENT_HANDLER handler);
+  void RemoveEventHandler(Event id, orxEVENT_HANDLER handler);
+
   class Planet : public Object
   {
   public:

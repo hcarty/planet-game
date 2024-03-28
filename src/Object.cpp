@@ -5,6 +5,26 @@
 
 #include "Object.h"
 
+// General game functionality
+
+// Event handling
+
+void game::SendEvent(game::Event event)
+{
+  orxEvent_SendShort(orxEVENT_TYPE_USER_DEFINED, orxENUM(event));
+}
+
+void game::RegisterEventHandler(Event id, orxEVENT_HANDLER handler)
+{
+  orxEvent_AddHandler(orxEVENT_TYPE_USER_DEFINED, handler);
+  orxEvent_SetHandlerIDFlags(handler, orxEVENT_TYPE_USER_DEFINED, orxNULL, orxEVENT_GET_FLAG(id), orxEVENT_KU32_MASK_ID_ALL);
+}
+
+void game::RemoveEventHandler(Event id, orxEVENT_HANDLER handler)
+{
+  orxEvent_RemoveHandler(orxEVENT_TYPE_USER_DEFINED, handler);
+}
+
 // Generic objects
 
 void Object::OnCreate()
@@ -63,8 +83,13 @@ void game::Planet::Update(const orxCLOCK_INFO &_rstInfo)
     if (*touchingArenaTop > 2.0)
     {
       orxLOG("TODO: Set game over");
-      SetLifeTime(0);
+      orxConfig_PushSection("Runtime");
+      auto scene = orxOBJECT(orxStructure_Get(orxConfig_GetU64("Scene")));
+      orxConfig_PopSection();
+      orxObject_SetLifeTime(scene, 0);
     }
+
+    SendEvent(Event::GameOver);
   }
 
   Object::Update(_rstInfo);
@@ -146,40 +171,33 @@ void game::Dropper::OnDelete()
 
 void game::Dropper::Update(const orxCLOCK_INFO &_rstInfo)
 {
-  orxVECTOR speed = orxVECTOR_0;
-
   PushConfigSection();
   const auto minDropWaitTime = orxConfig_GetFloat("MinDropWait");
   const auto minX = orxConfig_GetFloat("MinX");
   const auto maxX = orxConfig_GetFloat("MaxX");
-  orxVECTOR leftSpeed = orxVECTOR_0;
-  orxVECTOR rightSpeed = orxVECTOR_0;
-  orxConfig_GetVector("MaxSpeed", &rightSpeed);
-  orxVector_Mulf(&leftSpeed, &rightSpeed, -1);
+  orxVECTOR speed = orxVECTOR_0;
+  orxConfig_GetVector("MaxSpeed", &speed);
   PopConfigSection();
 
   // Dropper position
   orxVECTOR position = orxVECTOR_0;
-  GetPosition(position, orxTRUE);
+  GetPosition(position);
 
-  // Dropper movement
+  // Dropper movement and position bounds
+  // User controls
+  auto xDirection = orxInput_GetValue("Right") - orxInput_GetValue("Left");
+  orxVector_Mulf(&speed, &speed, xDirection);
+  orxVector_Add(&position, &position, orxVector_Mulf(&speed, &speed, _rstInfo.fDT));
   if (position.fX < minX)
   {
-    // Stay inside bounds
-    speed = rightSpeed;
+    position.fX = minX;
   }
   else if (position.fX > maxX)
   {
-    // Stay inside bounds
-    speed = leftSpeed;
+    position.fX = maxX;
   }
-  else
-  {
-    // User controls
-    auto xDirection = orxInput_GetValue("Right") - orxInput_GetValue("Left");
-    orxVector_Mulf(&speed, &rightSpeed, xDirection);
-  }
-  SetSpeed(speed);
+  // Set updated position
+  SetPosition(position);
 
   // Create a planet if it's been long enough since we dropped one
   if (!latest)
@@ -196,22 +214,20 @@ void game::Dropper::Update(const orxCLOCK_INFO &_rstInfo)
     return;
   }
 
-  // Movement
-  orxObject_SetSpeed(latest, &speed);
-
   // Drop current planet if we have one
   if (latest && orxInput_HasBeenActivated("Drop"))
   {
-    orxConfig_PushSection(orxObject_GetName(latest));
-    orxConfig_PushSection(orxConfig_GetString("Body"));
-    orxVECTOR gravity = orxVECTOR_0;
-    orxConfig_GetVector("CustomGravity", &gravity);
-    orxConfig_PopSection();
-    orxConfig_PopSection();
+    // Get the config name of the current planet
+    auto name = orxObject_GetName(latest);
 
-    orxObject_SetCustomGravity(latest, &gravity);
-    orxObject_SetSpeed(latest, &orxVECTOR_0);
+    // Remove placeholder planet object
+    orxObject_SetLifeTime(latest, 0);
+    // Mark our held object as gone
     latest = orxNULL;
+
+    // Create a replacement "real" object which will drop
+    auto planet = orxObject_CreateFromConfig(name);
+    orxObject_SetWorldPosition(planet, &position);
   }
 
   Object::Update(_rstInfo);
@@ -227,7 +243,9 @@ void game::Dropper::CreatePlanet()
   PushConfigSection();
   latest = orxObject_CreateFromConfig(orxConfig_GetString("Drop"));
   PopConfigSection();
-  orxObject_SetWorldPosition(latest, &position);
 
-  orxObject_SetCustomGravity(latest, &orxVECTOR_0);
+  // Remove physics body so we can safely set this as a child object
+  orxObject_UnlinkStructure(latest, orxSTRUCTURE_ID_BODY);
+
+  orxObject_SetParent(latest, GetOrxObject());
 }
