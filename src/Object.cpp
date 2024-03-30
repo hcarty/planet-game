@@ -169,10 +169,10 @@ void game::Dropper::OnDelete()
   Object::OnDelete();
 }
 
-void game::Dropper::Update(const orxCLOCK_INFO &_rstInfo)
+void game::Dropper::UpdatePosition(const orxCLOCK_INFO &_rstInfo)
 {
+  // Movement specs from config
   PushConfigSection();
-  const auto minDropWaitTime = orxConfig_GetFloat("MinDropWait");
   const auto minX = orxConfig_GetFloat("MinX");
   const auto maxX = orxConfig_GetFloat("MaxX");
   orxVECTOR speed = orxVECTOR_0;
@@ -183,11 +183,12 @@ void game::Dropper::Update(const orxCLOCK_INFO &_rstInfo)
   orxVECTOR position = orxVECTOR_0;
   GetPosition(position);
 
-  // Dropper movement and position bounds
   // User controls
   auto xDirection = orxInput_GetValue("Right") - orxInput_GetValue("Left");
   orxVector_Mulf(&speed, &speed, xDirection);
   orxVector_Add(&position, &position, orxVector_Mulf(&speed, &speed, _rstInfo.fDT));
+
+  // Constrain position to playable area
   if (position.fX < minX)
   {
     position.fX = minX;
@@ -196,8 +197,39 @@ void game::Dropper::Update(const orxCLOCK_INFO &_rstInfo)
   {
     position.fX = maxX;
   }
+
   // Set updated position
   SetPosition(position);
+}
+
+void game::Dropper::DropPlanet()
+{
+  // Planet must be present for it to be dropped
+  orxASSERT(latest);
+
+  // Get the config name of the current planet
+  auto name = orxObject_GetName(latest);
+
+  // Remove placeholder planet object
+  orxObject_SetLifeTime(latest, 0);
+  // Mark our held object as gone
+  latest = orxNULL;
+
+  // Create a replacement "real" object which will drop
+  auto planet = orxObject_CreateFromConfig(name);
+  orxVECTOR position = orxVECTOR_0;
+  GetPosition(position);
+  orxObject_SetPosition(planet, &position);
+}
+
+void game::Dropper::Update(const orxCLOCK_INFO &_rstInfo)
+{
+  PushConfigSection();
+  const auto minDropWaitTime = orxConfig_GetFloat("MinDropWait");
+  PopConfigSection();
+
+  // Dropper movement and position bounds
+  UpdatePosition(_rstInfo);
 
   // Create a planet if it's been long enough since we dropped one
   if (!latest)
@@ -210,24 +242,12 @@ void game::Dropper::Update(const orxCLOCK_INFO &_rstInfo)
       dtSinceDrop = 0.0;
       CreatePlanet();
     }
-
-    return;
   }
 
   // Drop current planet if we have one
   if (latest && orxInput_HasBeenActivated("Drop"))
   {
-    // Get the config name of the current planet
-    auto name = orxObject_GetName(latest);
-
-    // Remove placeholder planet object
-    orxObject_SetLifeTime(latest, 0);
-    // Mark our held object as gone
-    latest = orxNULL;
-
-    // Create a replacement "real" object which will drop
-    auto planet = orxObject_CreateFromConfig(name);
-    orxObject_SetWorldPosition(planet, &position);
+    DropPlanet();
   }
 
   Object::Update(_rstInfo);

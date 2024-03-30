@@ -55,7 +55,11 @@ namespace game
     void Update(const orxCLOCK_INFO &_rstInfo);
 
   private:
+    void UpdatePosition(const orxCLOCK_INFO &_rstInfo);
+
     void CreatePlanet();
+    void DropPlanet();
+
     bool first{true};
     orxOBJECT *latest{orxNULL};
     orxFLOAT dtSinceDrop{0.0};
