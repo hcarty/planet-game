@@ -414,6 +414,8 @@ void game::Dropper::DropPlanet()
 
 void game::Dropper::Update(const orxCLOCK_INFO &_rstInfo)
 {
+  orxInput_PushSet(GetModelName());
+
   PushConfigSection();
   const auto minDropWaitTime = orxConfig_GetFloat("MinDropWait");
   PopConfigSection();
@@ -439,6 +441,8 @@ void game::Dropper::Update(const orxCLOCK_INFO &_rstInfo)
   {
     DropPlanet();
   }
+
+  orxInput_PopSet();
 
   Object::Update(_rstInfo);
 }
