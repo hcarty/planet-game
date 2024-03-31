@@ -37,6 +37,9 @@ void planet::Update(const orxCLOCK_INFO &_rstInfo)
  */
 orxSTATUS planet::Init()
 {
+  // Register game event handler
+  game::event::Init();
+
   // Create the scene
   CreateObject("Scene");
 
@@ -65,6 +68,9 @@ void planet::Exit()
 {
   // Exit from bundle support
   orxBundle_Exit();
+
+  // Unregister custom event system
+  game::event::Exit();
 
   // Let orx clean all our mess automatically. :)
 }

@@ -3,26 +3,218 @@
  * @date 19-Mar-2024
  */
 
+#include <map>
+
 #include "Object.h"
 
 // General game functionality
 
 // Event handling
 
-void game::SendEvent(game::Event event)
+namespace game::event
 {
-  orxEvent_SendShort(orxEVENT_TYPE_USER_DEFINED, orxENUM(event));
-}
+  // Key holding names of sections with event handler definitions for an object
+  auto CONFIG_KEY = "EventHandlerList";
+  auto COMMAND = "Event.Send";
 
-void game::RegisterEventHandler(Event id, orxEVENT_HANDLER handler)
-{
-  orxEvent_AddHandler(orxEVENT_TYPE_USER_DEFINED, handler);
-  orxEvent_SetHandlerIDFlags(handler, orxEVENT_TYPE_USER_DEFINED, orxNULL, orxEVENT_GET_FLAG(id), orxEVENT_KU32_MASK_ID_ALL);
-}
+  // Map from event name to registered handlers listening for that event
+  static std::map<orxSTRINGID, std::map<const orxOBJECT *, orxSTRINGID>> eventRecipientObjects{};
 
-void game::RemoveEventHandler(Event id, orxEVENT_HANDLER handler)
-{
-  orxEvent_RemoveHandler(orxEVENT_TYPE_USER_DEFINED, handler);
+  void Command(orxU32 _u32ArgNumber, const orxCOMMAND_VAR *_astArgList, orxCOMMAND_VAR *_pstResult)
+  {
+    switch (_u32ArgNumber)
+    {
+    case 1ul:
+    {
+      // Event name
+      Send(_astArgList[0].zValue);
+      break;
+    }
+    case 2ul:
+    {
+      // Event name and a recipient object
+      auto object = orxOBJECT(orxStructure_Get(_astArgList[1].u64Value));
+      if (object)
+      {
+        Send(_astArgList[0].zValue, object);
+      }
+      break;
+    }
+    default:
+    {
+      // This should not be possible if the command is registered properly
+      orxASSERT(orxFALSE);
+      break;
+    }
+    }
+  }
+
+  // Record events handled by newly created objects and removes objects when they're deleted
+  orxSTATUS ObjectEventHandler(const orxEVENT *event)
+  {
+    // This handler should only be called for object events
+    orxASSERT(event->eType == orxEVENT_TYPE_OBJECT);
+
+    switch (event->eID)
+    {
+    case orxOBJECT_EVENT_CREATE:
+    {
+      // The object being created
+      orxOBJECT *obj = static_cast<orxOBJECT *>(event->hSender);
+      orxASSERT(obj);
+
+      // Get the object's name and therefore config section
+      auto name = orxObject_GetName(obj);
+      if (!orxConfig_HasSection(name))
+      {
+        // No config section matching this object
+        break;
+      }
+
+      // Get supported events from config
+      orxConfig_PushSection(name);
+      {
+        auto sections = orxConfig_GetListCount(CONFIG_KEY);
+        for (int i = 0; i < sections; i++)
+        {
+          // Process event handlers from given section
+          auto section = orxConfig_GetListString(CONFIG_KEY, i);
+          if (!orxConfig_HasSection(section))
+          {
+            orxLOG("No section %s referenced in %s from section %s", section, CONFIG_KEY, name);
+            continue;
+          }
+
+          // Register all handlers according to their keys
+          orxConfig_PushSection(section);
+          {
+            auto keys = orxConfig_GetKeyCount();
+            for (int j = 0; j < keys; j++)
+            {
+              auto key = orxConfig_GetKey(j);
+              auto id = orxString_GetID(key);
+
+              // Add the current object to the set of recipients with handlers for this event
+              eventRecipientObjects[id][obj] = orxString_GetID(section);
+            }
+          }
+          orxConfig_PopSection();
+        }
+      }
+      orxConfig_PopSection();
+      break;
+    }
+    case orxOBJECT_EVENT_DELETE:
+    {
+      orxOBJECT *obj = static_cast<orxOBJECT *>(event->hSender);
+      orxASSERT(obj);
+
+      // Get the object's name and therefore config section
+      auto name = orxObject_GetName(obj);
+      if (!orxConfig_HasSection(name))
+      {
+        // No config section matching this object
+        break;
+      }
+
+      // Get supported events from config
+      orxConfig_PushSection(name);
+      {
+        auto sections = orxConfig_GetListCount(CONFIG_KEY);
+        for (int i = 0; i < sections; i++)
+        {
+          // Process event handlers from given section
+          auto section = orxConfig_GetListString(CONFIG_KEY, i);
+          if (!orxConfig_HasSection(section))
+          {
+            orxLOG("No section %s referenced in %s from section %s", section, CONFIG_KEY, name);
+            continue;
+          }
+
+          // Register all handlers according to their keys
+          orxConfig_PushSection(section);
+          {
+            auto keys = orxConfig_GetKeyCount();
+            for (int j = 0; j < keys; j++)
+            {
+              auto key = orxConfig_GetKey(j);
+              auto id = orxString_GetID(key);
+
+              // Remove the current object from the set of recipients with handlers for this event
+              eventRecipientObjects[id].erase(obj);
+            }
+          }
+          orxConfig_PopSection();
+        }
+      }
+      orxConfig_PopSection();
+      break;
+    }
+    default:
+    {
+      // This should not happen as long as we register the event handler correctly
+      orxLOG("Unhandled object event ID");
+      orxASSERT(orxFALSE);
+    }
+    };
+
+    return orxSTATUS_SUCCESS;
+  }
+
+  void Init()
+  {
+    // Object event handling
+    orxEvent_AddHandler(orxEVENT_TYPE_OBJECT, ObjectEventHandler);
+    orxEvent_SetHandlerIDFlags(ObjectEventHandler, orxEVENT_TYPE_OBJECT, orxNULL,
+                               orxEVENT_GET_FLAG(orxOBJECT_EVENT_CREATE) | orxEVENT_GET_FLAG(orxOBJECT_EVENT_DELETE),
+                               orxEVENT_KU32_MASK_ID_ALL);
+
+    // Register commands
+    orxCOMMAND_REGISTER(COMMAND, Command, "none", orxCOMMAND_VAR_TYPE_NONE, 1, 1, {"Event", orxCOMMAND_VAR_TYPE_STRING}, {"Object = <void>", orxCOMMAND_VAR_TYPE_U64});
+  }
+
+  void Exit()
+  {
+    // Event handling
+    orxEvent_RemoveHandler(orxEVENT_TYPE_OBJECT, ObjectEventHandler);
+
+    // Commands
+    orxCOMMAND_UNREGISTER(COMMAND);
+  }
+
+  void EvaluateCommandFromConfig(const orxSTRING section, const orxSTRING key, const orxU64 guid)
+  {
+    orxConfig_PushSection(section);
+    orxCOMMAND_VAR _result;
+    orxCommand_EvaluateWithGUID(orxConfig_GetString(key), guid, &_result);
+    orxConfig_PopSection();
+  }
+
+  // Send an event to all listeners for an event
+  void Send(const orxSTRING event)
+  {
+    auto id = orxString_GetID(event);
+    auto recipients = eventRecipientObjects[id];
+    for (const auto [object, sectionID] : recipients)
+    {
+      auto section = orxString_GetFromID(sectionID);
+      EvaluateCommandFromConfig(section, event, orxStructure_GetGUID(orxSTRUCTURE(object)));
+    }
+  }
+
+  // Send an event to a specific object
+  void Send(const orxSTRING event, const orxOBJECT *object)
+  {
+    auto eventID = orxString_GetID(event);
+    if (!eventRecipientObjects.contains(eventID) || !eventRecipientObjects[eventID].contains(object))
+    {
+      orxLOG("Event %s is not registered to any objects", event);
+      return;
+    }
+
+    auto sectionID = eventRecipientObjects[eventID][object];
+    EvaluateCommandFromConfig(orxString_GetFromID(sectionID), event, orxStructure_GetGUID(orxSTRUCTURE(object)));
+  }
 }
 
 // Generic objects
@@ -82,14 +274,12 @@ void game::Planet::Update(const orxCLOCK_INFO &_rstInfo)
     touchingArenaTop = *touchingArenaTop + _rstInfo.fDT;
     if (*touchingArenaTop > 2.0)
     {
-      orxLOG("TODO: Set game over");
-      orxConfig_PushSection("Runtime");
-      auto scene = orxOBJECT(orxStructure_Get(orxConfig_GetU64("Scene")));
-      orxConfig_PopSection();
-      orxObject_SetLifeTime(scene, 0);
-    }
+      // Send an event signaling the Game Over state
+      event::Send("GameOver");
 
-    SendEvent(Event::GameOver);
+      // Reset the timer so that we don't fire the event every frame
+      touchingArenaTop.reset();
+    }
   }
 
   Object::Update(_rstInfo);

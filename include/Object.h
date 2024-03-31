@@ -1,5 +1,6 @@
 #pragma once
 
+#include <map>
 #include <optional>
 
 #include "planet.h"
@@ -19,14 +20,20 @@ private:
 
 namespace game
 {
-  enum class Event : orxENUM
+  namespace event
   {
-    GameOver,
-  };
+    // Call at init time to setup event handling and commands
+    void Init();
 
-  void SendEvent(Event event);
-  void RegisterEventHandler(Event id, orxEVENT_HANDLER handler);
-  void RemoveEventHandler(Event id, orxEVENT_HANDLER handler);
+    // Call at exit time to remove event handlers and commands
+    void Exit();
+
+    // Send an event to all listeners for an event
+    void Send(const orxSTRING event);
+
+    // Send an event to a specific object
+    void Send(const orxSTRING event, const orxOBJECT *object);
+  }
 
   class Planet : public Object
   {
@@ -41,9 +48,15 @@ namespace game
   private:
     std::optional<orxFLOAT> touchingArenaTop{};
 
+    // Engine event handlers
+
     void OnPlanetCollide(ScrollObject *_poCollider);
     void OnArenaTopCollide();
     void OnArenaTopSeparate();
+
+    // Game event handlers
+
+    // static orxSTATUS OnGameOver(const orxEVENT *event);
   };
 
   class Dropper : public Object
