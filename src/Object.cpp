@@ -116,7 +116,7 @@ namespace game::event
           orxConfig_PushSection(section);
           {
             auto keys = orxConfig_GetKeyCount();
-            for (int j = 0; j < keys; j++)
+            for (orxU32 j = 0; j < keys; j++)
             {
               auto key = orxConfig_GetKey(j);
               auto id = orxString_GetID(key);
@@ -162,7 +162,7 @@ namespace game::event
           orxConfig_PushSection(section);
           {
             auto keys = orxConfig_GetKeyCount();
-            for (int j = 0; j < keys; j++)
+            for (orxU32 j = 0; j < keys; j++)
             {
               auto key = orxConfig_GetKey(j);
               auto id = orxString_GetID(key);
@@ -394,7 +394,7 @@ void game::Planet::OnPlanetCollide(ScrollObject *_poCollider)
 void game::Planet::OnArenaTopCollide()
 {
   // Start counting time in contact
-  touchingArenaTop = 0.0;
+  touchingArenaTop = 0.0f;
 }
 
 void game::Planet::OnArenaTopSeparate()
