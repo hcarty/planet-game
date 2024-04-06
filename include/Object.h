@@ -15,6 +15,9 @@ protected:
   void OnDelete();
   void Update(const orxCLOCK_INFO &_rstInfo);
 
+  void PushInputSet();
+  void PopInputSet();
+
 private:
 };
 

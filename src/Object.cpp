@@ -49,6 +49,33 @@ namespace game::event
     }
   }
 
+  // Report input events as game events
+  orxSTATUS InputEventHandler(const orxEVENT *event)
+  {
+    // This handler should only be called for input events
+    orxASSERT(event->eType == orxEVENT_TYPE_INPUT);
+
+    switch (event->eID)
+    {
+    case orxINPUT_EVENT_ON:
+    {
+      orxINPUT_EVENT_PAYLOAD *input = static_cast<orxINPUT_EVENT_PAYLOAD *>(event->pstPayload);
+      orxCHAR eventName[64] = "";
+      orxString_NPrint(eventName, sizeof(eventName), "Input:%s:%s", input->zSetName, input->zInputName);
+      Send(eventName);
+      break;
+    }
+    default:
+    {
+      // This should not happen as long as we register the event handler correctly
+      orxLOG("Unhandled input event ID");
+      orxASSERT(orxFALSE);
+    }
+    }
+
+    return orxSTATUS_SUCCESS;
+  }
+
   // Record events handled by newly created objects and removes objects when they're deleted
   orxSTATUS ObjectEventHandler(const orxEVENT *event)
   {
@@ -169,6 +196,12 @@ namespace game::event
                                orxEVENT_GET_FLAG(orxOBJECT_EVENT_CREATE) | orxEVENT_GET_FLAG(orxOBJECT_EVENT_DELETE),
                                orxEVENT_KU32_MASK_ID_ALL);
 
+    // Input event handling
+    orxEvent_AddHandler(orxEVENT_TYPE_INPUT, InputEventHandler);
+    orxEvent_SetHandlerIDFlags(InputEventHandler, orxEVENT_TYPE_INPUT, orxNULL,
+                               orxEVENT_GET_FLAG(orxINPUT_EVENT_ON),
+                               orxEVENT_KU32_MASK_ID_ALL);
+
     // Register commands
     orxCOMMAND_REGISTER(COMMAND, Command, "none", orxCOMMAND_VAR_TYPE_NONE, 1, 1, {"Event", orxCOMMAND_VAR_TYPE_STRING}, {"Object = <void>", orxCOMMAND_VAR_TYPE_U64});
   }
@@ -177,6 +210,7 @@ namespace game::event
   {
     // Event handling
     orxEvent_RemoveHandler(orxEVENT_TYPE_OBJECT, ObjectEventHandler);
+    orxEvent_RemoveHandler(orxEVENT_TYPE_INPUT, InputEventHandler);
 
     // Commands
     orxCOMMAND_UNREGISTER(COMMAND);
@@ -230,6 +264,26 @@ void Object::OnDelete()
 
 void Object::Update(const orxCLOCK_INFO &_rstInfo)
 {
+}
+
+void Object::PushInputSet()
+{
+  PushConfigSection();
+  if (orxConfig_HasValueNoCheck("Input"))
+  {
+    orxInput_PushSet(orxConfig_GetString("Input"));
+  }
+  PopConfigSection();
+}
+
+void Object::PopInputSet()
+{
+  PushConfigSection();
+  if (orxConfig_HasValueNoCheck("Input"))
+  {
+    orxInput_PopSet();
+  }
+  PopConfigSection();
 }
 
 // Planets
@@ -414,7 +468,7 @@ void game::Dropper::DropPlanet()
 
 void game::Dropper::Update(const orxCLOCK_INFO &_rstInfo)
 {
-  orxInput_PushSet(GetModelName());
+  PushInputSet();
 
   PushConfigSection();
   const auto minDropWaitTime = orxConfig_GetFloat("MinDropWait");
@@ -422,6 +476,12 @@ void game::Dropper::Update(const orxCLOCK_INFO &_rstInfo)
 
   // Dropper movement and position bounds
   UpdatePosition(_rstInfo);
+
+  // Drop current planet if we have one
+  if (latest && orxInput_HasBeenActivated("Drop"))
+  {
+    DropPlanet();
+  }
 
   // Create a planet if it's been long enough since we dropped one
   if (!latest)
@@ -436,13 +496,7 @@ void game::Dropper::Update(const orxCLOCK_INFO &_rstInfo)
     }
   }
 
-  // Drop current planet if we have one
-  if (latest && orxInput_HasBeenActivated("Drop"))
-  {
-    DropPlanet();
-  }
-
-  orxInput_PopSet();
+  PopInputSet();
 
   Object::Update(_rstInfo);
 }
