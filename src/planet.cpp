@@ -40,8 +40,11 @@ orxSTATUS planet::Init()
   // Register game event handler
   game::event::Init();
 
+  // Create initialization object
+  CreateObject("Init");
+
   // Create the scene
-  CreateObject("Scene");
+  CreateObject("TitleScene");
 
   // Is processing a new bundle?
   if (orxBundle_IsProcessing())
