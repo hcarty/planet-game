@@ -386,6 +386,14 @@ void game::Planet::OnPlanetCollide(ScrollObject *_poCollider)
       auto nextPlanet = orxConfig_GetString("Next");
       auto planet = orxObject_CreateFromConfig(nextPlanet);
       orxObject_SetWorldPosition(planet, &pos);
+
+      orxConfig_PushSection(nextPlanet);
+      auto scoreDiff = orxConfig_GetU32("Score");
+      orxConfig_PopSection();
+      orxConfig_PushSection("Runtime");
+      auto score = orxConfig_GetU32("Score");
+      orxConfig_SetU32("Score", score + scoreDiff);
+      orxConfig_PopSection();
     }
     PopConfigSection();
   }
