@@ -15,29 +15,11 @@ protected:
   void OnDelete();
   void Update(const orxCLOCK_INFO &_rstInfo);
 
-  void PushInputSet();
-  void PopInputSet();
-
 private:
 };
 
 namespace game
 {
-  namespace event
-  {
-    // Call at init time to setup event handling and commands
-    void Init();
-
-    // Call at exit time to remove event handlers and commands
-    void Exit();
-
-    // Send an event to all listeners for an event
-    void Send(const orxSTRING event);
-
-    // Send an event to a specific object
-    void Send(const orxSTRING event, const orxOBJECT *object);
-  }
-
   class Planet : public Object
   {
   public:

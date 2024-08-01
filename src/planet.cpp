@@ -8,10 +8,7 @@
 #undef __SCROLL_IMPL__
 
 #include "Object.h"
-
-#define orxBUNDLE_IMPL
-#include "orxBundle.h"
-#undef orxBUNDLE_IMPL
+#include "orxExtensions.h"
 
 #ifdef __orxMSVC__
 
@@ -37,21 +34,11 @@ void planet::Update(const orxCLOCK_INFO &_rstInfo)
  */
 orxSTATUS planet::Init()
 {
-  // Register game event handler
-  game::event::Init();
-
-  // Create initialization object
-  CreateObject("Init");
+  // Init extensions
+  InitExtensions();
 
   // Create the scene
   CreateObject("TitleScene");
-
-  // Is processing a new bundle?
-  if (orxBundle_IsProcessing())
-  {
-    // Done!
-    return orxSTATUS_SUCCESS;
-  }
 
   // Done!
   return orxSTATUS_SUCCESS;
@@ -69,11 +56,8 @@ orxSTATUS planet::Run()
  */
 void planet::Exit()
 {
-  // Exit from bundle support
-  orxBundle_Exit();
-
-  // Unregister custom event system
-  game::event::Exit();
+  // Exit from extensions
+  ExitExtensions();
 
   // Let orx clean all our mess automatically. :)
 }
@@ -92,13 +76,8 @@ void planet::BindObjects()
  */
 orxSTATUS planet::Bootstrap() const
 {
-  // Initialize bundle resource type
-  orxBundle_Init();
-
-  // Add config storage to find the initial config file
-  orxResource_AddStorage(orxCONFIG_KZ_RESOURCE_GROUP, orxBUNDLE_KZ_RESOURCE_STORAGE, orxFALSE);
-  orxResource_AddStorage(orxCONFIG_KZ_RESOURCE_GROUP, orxBUNDLE_KZ_RESOURCE_STORAGE "planet.obr", orxFALSE);
-  orxResource_AddStorage(orxCONFIG_KZ_RESOURCE_GROUP, "../data/config", orxFALSE);
+  // Bootstrap extensions
+  BootstrapExtensions();
 
   // Return orxSTATUS_FAILURE to prevent orx from loading the default config file
   return orxSTATUS_SUCCESS;

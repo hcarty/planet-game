@@ -1,0 +1,729 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 45;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		6FCF10F23A0E2C3A4EFC304A /* Object.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 02EF47D72F3020CD11AA6A7F /* Object.cpp */; };
+		35604F01652518FE7F7C56DF /* planet-game.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 52FA48206620500064F52911 /* planet-game.cpp */; };
+		0D59637737BE4B190FF20B7F /* planet.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4FF8283F58C5703815F07221 /* planet.cpp */; };
+		3D5208CB78AD4D5809AE3DA7 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 48407721533346C332794822 /* Foundation.framework */; };
+		347F118750F64AF47AE56CD6 /* AppKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 58ED4EF47F1C138265E66FD5 /* AppKit.framework */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		21C67859223426C5082B6860 /* premake4.lua */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.lua; name = "premake4.lua"; path = "../../premake4.lua"; sourceTree = "<group>"; };
+		3D990FAC19FB32E50C6B6C6B /* orxBundleData.inc */ = {isa = PBXFileReference; lastKnownFileType = text; name = "orxBundleData.inc"; path = "../../../include/orxBundleData.inc"; sourceTree = "<group>"; };
+		2A560390011B2D352F6B31CD /* CreationTemplate.ini */ = {isa = PBXFileReference; lastKnownFileType = text; name = "CreationTemplate.ini"; path = "../../../data/config/CreationTemplate.ini"; sourceTree = "<group>"; };
+		29BE7FA947837396397F70AE /* ExtensionTemplate.ini */ = {isa = PBXFileReference; lastKnownFileType = text; name = "ExtensionTemplate.ini"; path = "../../../data/config/ExtensionTemplate.ini"; sourceTree = "<group>"; };
+		65154FD342D06B7A445A288E /* SettingsTemplate.ini */ = {isa = PBXFileReference; lastKnownFileType = text; name = "SettingsTemplate.ini"; path = "../../../data/config/SettingsTemplate.ini"; sourceTree = "<group>"; };
+		0F3037ED47EB3E2709E65B6D /* planet-game.ini */ = {isa = PBXFileReference; lastKnownFileType = text; name = "planet-game.ini"; path = "../../../data/config/planet-game.ini"; sourceTree = "<group>"; };
+		51D84863714249085C3002E8 /* planet-gamed.ini */ = {isa = PBXFileReference; lastKnownFileType = text; name = "planet-gamed.ini"; path = "../../../data/config/planet-gamed.ini"; sourceTree = "<group>"; };
+		7445729800BD786D75D57E57 /* planet-gamep.ini */ = {isa = PBXFileReference; lastKnownFileType = text; name = "planet-gamep.ini"; path = "../../../data/config/planet-gamep.ini"; sourceTree = "<group>"; };
+		2B8735C8697528740AB31628 /* planet.ini */ = {isa = PBXFileReference; lastKnownFileType = text; name = "planet.ini"; path = "../../../data/config/planet.ini"; sourceTree = "<group>"; };
+		3CAB3C815D23336A2FB52ADA /* planetd.ini */ = {isa = PBXFileReference; lastKnownFileType = text; name = "planetd.ini"; path = "../../../data/config/planetd.ini"; sourceTree = "<group>"; };
+		54D449D80F917A002EA77C9A /* planetp.ini */ = {isa = PBXFileReference; lastKnownFileType = text; name = "planetp.ini"; path = "../../../data/config/planetp.ini"; sourceTree = "<group>"; };
+		7EE5096E1D022C7E24B12121 /* Object.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "Object.h"; path = "../../../include/Object.h"; sourceTree = "<group>"; };
+		43262AC5156558E86CA15E16 /* Scroll.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "Scroll.h"; path = "../../../include/Scroll/Scroll.h"; sourceTree = "<group>"; };
+		29FB44D262015203588049C9 /* ScrollBase.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "ScrollBase.h"; path = "../../../include/Scroll/ScrollBase.h"; sourceTree = "<group>"; };
+		6BF260CE0A9F0E1D39482FD3 /* ScrollEd.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "ScrollEd.h"; path = "../../../include/Scroll/ScrollEd.h"; sourceTree = "<group>"; };
+		5DF44C9C34641FE0483D370E /* ScrollObject.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "ScrollObject.h"; path = "../../../include/Scroll/ScrollObject.h"; sourceTree = "<group>"; };
+		3F61318F557F0C1475412750 /* lz4.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "lz4.h"; path = "../../../include/lz4/lz4.h"; sourceTree = "<group>"; };
+		2C085EA1212E5BDD33FB2908 /* lz4hc.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "lz4hc.h"; path = "../../../include/lz4/lz4hc.h"; sourceTree = "<group>"; };
+		59F92A3523F4005762F562F2 /* orxBundle.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "orxBundle.h"; path = "../../../include/orxBundle.h"; sourceTree = "<group>"; };
+		18D5067B347D2F5C7DA42788 /* orxExtensions.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "orxExtensions.h"; path = "../../../include/orxExtensions.h"; sourceTree = "<group>"; };
+		754C762A6AEE5EAA05C01DE7 /* planet-game.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "planet-game.h"; path = "../../../include/planet-game.h"; sourceTree = "<group>"; };
+		3DB73A413476674433D922EF /* planet.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "planet.h"; path = "../../../include/planet.h"; sourceTree = "<group>"; };
+		02EF47D72F3020CD11AA6A7F /* Object.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = "Object.cpp"; path = "../../../src/Object.cpp"; sourceTree = "<group>"; };
+		52FA48206620500064F52911 /* planet-game.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = "planet-game.cpp"; path = "../../../src/planet-game.cpp"; sourceTree = "<group>"; };
+		4FF8283F58C5703815F07221 /* planet.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = "planet.cpp"; path = "../../../src/planet.cpp"; sourceTree = "<group>"; };
+		48407721533346C332794822 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = "Foundation.framework"; path = "/System/Library/Frameworks/Foundation.framework"; sourceTree = "<absolute>"; };
+		58ED4EF47F1C138265E66FD5 /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = "AppKit.framework"; path = "/System/Library/Frameworks/AppKit.framework"; sourceTree = "<absolute>"; };
+		39BE74C619AB3E6B152D7CA1 /* planet-gamed */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; name = "planet-gamed"; path = "planet-gamed"; sourceTree = BUILT_PRODUCTS_DIR; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		42DB408F76B455E3653C598A /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				3D5208CB78AD4D5809AE3DA7 /* Foundation.framework in Frameworks */,
+				347F118750F64AF47AE56CD6 /* AppKit.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		092641AA0AC72E8F63480F17 /* planet-game */ = {
+			isa = PBXGroup;
+			children = (
+				32962E00305460687D657F0C /* build */,
+				199654DF379E06C85DF71C4D /* bundle */,
+				19430C7761AD4AD03F4C2387 /* config */,
+				7F656C90686A35AA580B4CFD /* include */,
+				01EF32542C3571F60AF85DA5 /* src */,
+				4EA74DAE13C2269325CE0234 /* Frameworks */,
+				0AC05E282D9A6C6B74464B9C /* Products */,
+			);
+			name = "planet-game";
+			sourceTree = "<group>";
+		};
+		32962E00305460687D657F0C /* build */ = {
+			isa = PBXGroup;
+			children = (
+				21C67859223426C5082B6860 /* premake4.lua */,
+			);
+			name = "build";
+			sourceTree = "<group>";
+		};
+		199654DF379E06C85DF71C4D /* bundle */ = {
+			isa = PBXGroup;
+			children = (
+				3D990FAC19FB32E50C6B6C6B /* orxBundleData.inc */,
+			);
+			name = "bundle";
+			sourceTree = "<group>";
+		};
+		19430C7761AD4AD03F4C2387 /* config */ = {
+			isa = PBXGroup;
+			children = (
+				2A560390011B2D352F6B31CD /* CreationTemplate.ini */,
+				29BE7FA947837396397F70AE /* ExtensionTemplate.ini */,
+				65154FD342D06B7A445A288E /* SettingsTemplate.ini */,
+				0F3037ED47EB3E2709E65B6D /* planet-game.ini */,
+				51D84863714249085C3002E8 /* planet-gamed.ini */,
+				7445729800BD786D75D57E57 /* planet-gamep.ini */,
+				2B8735C8697528740AB31628 /* planet.ini */,
+				3CAB3C815D23336A2FB52ADA /* planetd.ini */,
+				54D449D80F917A002EA77C9A /* planetp.ini */,
+			);
+			name = "config";
+			sourceTree = "<group>";
+		};
+		7F656C90686A35AA580B4CFD /* include */ = {
+			isa = PBXGroup;
+			children = (
+				7EE5096E1D022C7E24B12121 /* Object.h */,
+				2CF30C9B462154D70CBF0E8C /* Scroll */,
+				311E293648F37C2A477B0215 /* lz4 */,
+				59F92A3523F4005762F562F2 /* orxBundle.h */,
+				18D5067B347D2F5C7DA42788 /* orxExtensions.h */,
+				754C762A6AEE5EAA05C01DE7 /* planet-game.h */,
+				3DB73A413476674433D922EF /* planet.h */,
+			);
+			name = "include";
+			sourceTree = "<group>";
+		};
+		2CF30C9B462154D70CBF0E8C /* Scroll */ = {
+			isa = PBXGroup;
+			children = (
+				43262AC5156558E86CA15E16 /* Scroll.h */,
+				29FB44D262015203588049C9 /* ScrollBase.h */,
+				6BF260CE0A9F0E1D39482FD3 /* ScrollEd.h */,
+				5DF44C9C34641FE0483D370E /* ScrollObject.h */,
+			);
+			name = "Scroll";
+			sourceTree = "<group>";
+		};
+		311E293648F37C2A477B0215 /* lz4 */ = {
+			isa = PBXGroup;
+			children = (
+				3F61318F557F0C1475412750 /* lz4.h */,
+				2C085EA1212E5BDD33FB2908 /* lz4hc.h */,
+			);
+			name = "lz4";
+			sourceTree = "<group>";
+		};
+		01EF32542C3571F60AF85DA5 /* src */ = {
+			isa = PBXGroup;
+			children = (
+				02EF47D72F3020CD11AA6A7F /* Object.cpp */,
+				52FA48206620500064F52911 /* planet-game.cpp */,
+				4FF8283F58C5703815F07221 /* planet.cpp */,
+			);
+			name = "src";
+			sourceTree = "<group>";
+		};
+		4EA74DAE13C2269325CE0234 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				48407721533346C332794822 /* Foundation.framework */,
+				58ED4EF47F1C138265E66FD5 /* AppKit.framework */,
+			);
+			name = "Frameworks";
+			sourceTree = "<group>";
+		};
+		0AC05E282D9A6C6B74464B9C /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				39BE74C619AB3E6B152D7CA1 /* planet-gamed */,
+			);
+			name = "Products";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		4D4665697B090DCA71091249 /* planet-game */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 078D61A819000AF032BF54F1 /* Build configuration list for PBXNativeTarget "planet-game" */;
+			buildPhases = (
+				5A5F47450B8D0233209547BD /* Resources */,
+				59D06BCD78AD53EA59A85EE5 /* Sources */,
+				42DB408F76B455E3653C598A /* Frameworks */,
+				9607AE3710C85E8F00CD1376 /* Postbuild */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "planet-game";
+			productInstallPath = "$(HOME)/bin";
+			productName = "planet-game";
+			productReference = 39BE74C619AB3E6B152D7CA1 /* planet-gamed */;
+			productType = "com.apple.product-type.tool";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		08FB7793FE84155DC02AAC07 /* Project object */ = {
+			isa = PBXProject;
+			buildConfigurationList = 1DEB928908733DD80010E9CD /* Build configuration list for PBXProject "planet-game" */;
+			compatibilityVersion = "Xcode 3.2";
+			hasScannedForEncodings = 1;
+			mainGroup = 092641AA0AC72E8F63480F17 /* planet-game */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				4D4665697B090DCA71091249 /* planet-gamed */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		5A5F47450B8D0233209547BD /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		9607AE3710C85E8F00CD1376 /* Postbuild */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = Postbuild;
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "cp -f /Users/hcarty/projects/orx/code/lib/dynamic/liborx*.dylib ../../../bin";
+		};
+/* End PBXShellScriptBuildPhase section */
+/* Begin PBXSourcesBuildPhase section */
+		59D06BCD78AD53EA59A85EE5 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				6FCF10F23A0E2C3A4EFC304A /* Object.cpp in Sources */,
+				35604F01652518FE7F7C56DF /* planet-game.cpp in Sources */,
+				0D59637737BE4B190FF20B7F /* planet.cpp in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		36EF0F38274664FA11AB7204 /* Debug 64-bit Universal */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CONFIGURATION_BUILD_DIR = ../../../bin;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_MODEL_TUNING = G5;
+				INSTALL_PATH = /usr/local/bin;
+				PRODUCT_NAME = "planet-gamed";
+			};
+			name = "Debug 64-bit Universal";
+		};
+		4394576D55826770011A5B9E /* Debug Native 64-bit */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CONFIGURATION_BUILD_DIR = ../../../bin;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_MODEL_TUNING = G5;
+				INSTALL_PATH = /usr/local/bin;
+				PRODUCT_NAME = "planet-gamed";
+			};
+			name = "Debug Native 64-bit";
+		};
+		234B45F9761B12BE0C742FE4 /* Profile 64-bit Universal */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CONFIGURATION_BUILD_DIR = ../../../bin;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_MODEL_TUNING = G5;
+				INSTALL_PATH = /usr/local/bin;
+				PRODUCT_NAME = "planet-gamep";
+			};
+			name = "Profile 64-bit Universal";
+		};
+		7494288630114C4758BB7C1E /* Profile Native 64-bit */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CONFIGURATION_BUILD_DIR = ../../../bin;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_MODEL_TUNING = G5;
+				INSTALL_PATH = /usr/local/bin;
+				PRODUCT_NAME = "planet-gamep";
+			};
+			name = "Profile Native 64-bit";
+		};
+		35125B9939A502EC66BD15C2 /* Release 64-bit Universal */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CONFIGURATION_BUILD_DIR = ../../../bin;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_MODEL_TUNING = G5;
+				INSTALL_PATH = /usr/local/bin;
+				PRODUCT_NAME = "planet-game";
+			};
+			name = "Release 64-bit Universal";
+		};
+		05F93996457F18A03F6922C9 /* Release Native 64-bit */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CONFIGURATION_BUILD_DIR = ../../../bin;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_MODEL_TUNING = G5;
+				INSTALL_PATH = /usr/local/bin;
+				PRODUCT_NAME = "planet-game";
+			};
+			name = "Release Native 64-bit";
+		};
+		01335DE857507233311014CE /* Bundle 64-bit Universal */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CONFIGURATION_BUILD_DIR = ../../../bin;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_MODEL_TUNING = G5;
+				INSTALL_PATH = /usr/local/bin;
+				PRODUCT_NAME = "planet-game";
+			};
+			name = "Bundle 64-bit Universal";
+		};
+		0B1B4E3667AC5F10475C77D2 /* Bundle Native 64-bit */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CONFIGURATION_BUILD_DIR = ../../../bin;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_MODEL_TUNING = G5;
+				INSTALL_PATH = /usr/local/bin;
+				PRODUCT_NAME = "planet-game";
+			};
+			name = "Bundle Native 64-bit";
+		};
+		084579A54FB861BF73F0393A /* Debug 64-bit Universal */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
+				CONFIGURATION_BUILD_DIR = "$(SYMROOT)";
+				CONFIGURATION_TEMP_DIR = "$(OBJROOT)";
+				COPY_PHASE_STRIP = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_ENABLE_CPP_EXCEPTIONS = NO;
+				GCC_ENABLE_OBJC_EXCEPTIONS = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"__orxDEBUG__",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				HEADER_SEARCH_PATHS = (
+					"../../../../orx/code/include",
+					"../../../include/Scroll",
+					"../../../include",
+				);
+				LIBRARY_SEARCH_PATHS = (
+					"../../../../orx/code/lib/dynamic",
+				);
+				OBJROOT = "obj/Universal64/Debug";
+				ONLY_ACTIVE_ARCH = YES;
+				OTHER_CFLAGS = (
+					"-ffast-math",
+					"-stdlib=libc++",
+					"-gdwarf-2",
+					"-Wno-unused-function",
+					"-Wno-write-strings",
+				);
+				OTHER_LDFLAGS = (
+					"-lorxd",
+					"-stdlib=libc++",
+					"-dead_strip",
+				);
+				STANDARD_C_PLUS_PLUS_LIBRARY_TYPE = static;
+				SYMROOT = "../../../bin";
+			};
+			name = "Debug 64-bit Universal";
+		};
+		70BA6C63185715F062AC1B48 /* Debug Native 64-bit */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = "x86_64";
+				CONFIGURATION_BUILD_DIR = "$(SYMROOT)";
+				CONFIGURATION_TEMP_DIR = "$(OBJROOT)";
+				COPY_PHASE_STRIP = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_ENABLE_CPP_EXCEPTIONS = NO;
+				GCC_ENABLE_OBJC_EXCEPTIONS = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"__orxDEBUG__",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				HEADER_SEARCH_PATHS = (
+					"../../../../orx/code/include",
+					"../../../include/Scroll",
+					"../../../include",
+				);
+				LIBRARY_SEARCH_PATHS = (
+					"../../../../orx/code/lib/dynamic",
+				);
+				OBJROOT = "obj/x64/Debug";
+				ONLY_ACTIVE_ARCH = YES;
+				OTHER_CFLAGS = (
+					"-ffast-math",
+					"-stdlib=libc++",
+					"-gdwarf-2",
+					"-Wno-unused-function",
+					"-Wno-write-strings",
+				);
+				OTHER_LDFLAGS = (
+					"-lorxd",
+					"-stdlib=libc++",
+					"-dead_strip",
+				);
+				STANDARD_C_PLUS_PLUS_LIBRARY_TYPE = static;
+				SYMROOT = "../../../bin";
+			};
+			name = "Debug Native 64-bit";
+		};
+		5A357C9E0C7454B947AE0619 /* Profile 64-bit Universal */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
+				CONFIGURATION_BUILD_DIR = "$(SYMROOT)";
+				CONFIGURATION_TEMP_DIR = "$(OBJROOT)";
+				COPY_PHASE_STRIP = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_ENABLE_CPP_EXCEPTIONS = NO;
+				GCC_ENABLE_CPP_RTTI = NO;
+				GCC_ENABLE_OBJC_EXCEPTIONS = NO;
+				GCC_OPTIMIZATION_LEVEL = s;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"__orxPROFILER__",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				HEADER_SEARCH_PATHS = (
+					"../../../../orx/code/include",
+					"../../../include/Scroll",
+					"../../../include",
+				);
+				LIBRARY_SEARCH_PATHS = (
+					"../../../../orx/code/lib/dynamic",
+				);
+				OBJROOT = "obj/Universal64/Profile";
+				ONLY_ACTIVE_ARCH = NO;
+				OTHER_CFLAGS = (
+					"-ffast-math",
+					"-stdlib=libc++",
+					"-gdwarf-2",
+					"-Wno-unused-function",
+					"-Wno-write-strings",
+				);
+				OTHER_LDFLAGS = (
+					"-lorxp",
+					"-stdlib=libc++",
+					"-dead_strip",
+				);
+				STANDARD_C_PLUS_PLUS_LIBRARY_TYPE = static;
+				SYMROOT = "../../../bin";
+			};
+			name = "Profile 64-bit Universal";
+		};
+		366B554942244A323794109E /* Profile Native 64-bit */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = "x86_64";
+				CONFIGURATION_BUILD_DIR = "$(SYMROOT)";
+				CONFIGURATION_TEMP_DIR = "$(OBJROOT)";
+				COPY_PHASE_STRIP = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_ENABLE_CPP_EXCEPTIONS = NO;
+				GCC_ENABLE_CPP_RTTI = NO;
+				GCC_ENABLE_OBJC_EXCEPTIONS = NO;
+				GCC_OPTIMIZATION_LEVEL = s;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"__orxPROFILER__",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				HEADER_SEARCH_PATHS = (
+					"../../../../orx/code/include",
+					"../../../include/Scroll",
+					"../../../include",
+				);
+				LIBRARY_SEARCH_PATHS = (
+					"../../../../orx/code/lib/dynamic",
+				);
+				OBJROOT = "obj/x64/Profile";
+				ONLY_ACTIVE_ARCH = NO;
+				OTHER_CFLAGS = (
+					"-ffast-math",
+					"-stdlib=libc++",
+					"-gdwarf-2",
+					"-Wno-unused-function",
+					"-Wno-write-strings",
+				);
+				OTHER_LDFLAGS = (
+					"-lorxp",
+					"-stdlib=libc++",
+					"-dead_strip",
+				);
+				STANDARD_C_PLUS_PLUS_LIBRARY_TYPE = static;
+				SYMROOT = "../../../bin";
+			};
+			name = "Profile Native 64-bit";
+		};
+		7B2E147F2F5A53247C681424 /* Release 64-bit Universal */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
+				CONFIGURATION_BUILD_DIR = "$(SYMROOT)";
+				CONFIGURATION_TEMP_DIR = "$(OBJROOT)";
+				COPY_PHASE_STRIP = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_ENABLE_CPP_EXCEPTIONS = NO;
+				GCC_ENABLE_CPP_RTTI = NO;
+				GCC_ENABLE_OBJC_EXCEPTIONS = NO;
+				GCC_OPTIMIZATION_LEVEL = s;
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				HEADER_SEARCH_PATHS = (
+					"../../../../orx/code/include",
+					"../../../include/Scroll",
+					"../../../include",
+				);
+				LIBRARY_SEARCH_PATHS = (
+					"../../../../orx/code/lib/dynamic",
+				);
+				OBJROOT = "obj/Universal64/Release";
+				ONLY_ACTIVE_ARCH = NO;
+				OTHER_CFLAGS = (
+					"-ffast-math",
+					"-stdlib=libc++",
+					"-gdwarf-2",
+					"-Wno-unused-function",
+					"-Wno-write-strings",
+				);
+				OTHER_LDFLAGS = (
+					"-lorx",
+					"-stdlib=libc++",
+					"-dead_strip",
+				);
+				STANDARD_C_PLUS_PLUS_LIBRARY_TYPE = static;
+				SYMROOT = "../../../bin";
+			};
+			name = "Release 64-bit Universal";
+		};
+		43A040DE59684C4C1A0900AB /* Release Native 64-bit */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = "x86_64";
+				CONFIGURATION_BUILD_DIR = "$(SYMROOT)";
+				CONFIGURATION_TEMP_DIR = "$(OBJROOT)";
+				COPY_PHASE_STRIP = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_ENABLE_CPP_EXCEPTIONS = NO;
+				GCC_ENABLE_CPP_RTTI = NO;
+				GCC_ENABLE_OBJC_EXCEPTIONS = NO;
+				GCC_OPTIMIZATION_LEVEL = s;
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				HEADER_SEARCH_PATHS = (
+					"../../../../orx/code/include",
+					"../../../include/Scroll",
+					"../../../include",
+				);
+				LIBRARY_SEARCH_PATHS = (
+					"../../../../orx/code/lib/dynamic",
+				);
+				OBJROOT = "obj/x64/Release";
+				ONLY_ACTIVE_ARCH = NO;
+				OTHER_CFLAGS = (
+					"-ffast-math",
+					"-stdlib=libc++",
+					"-gdwarf-2",
+					"-Wno-unused-function",
+					"-Wno-write-strings",
+				);
+				OTHER_LDFLAGS = (
+					"-lorx",
+					"-stdlib=libc++",
+					"-dead_strip",
+				);
+				STANDARD_C_PLUS_PLUS_LIBRARY_TYPE = static;
+				SYMROOT = "../../../bin";
+			};
+			name = "Release Native 64-bit";
+		};
+		73F627CE60CA092F11435CCC /* Bundle 64-bit Universal */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
+				CONFIGURATION_BUILD_DIR = "$(SYMROOT)";
+				CONFIGURATION_TEMP_DIR = "$(OBJROOT)";
+				COPY_PHASE_STRIP = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_ENABLE_CPP_EXCEPTIONS = NO;
+				GCC_ENABLE_CPP_RTTI = NO;
+				GCC_ENABLE_OBJC_EXCEPTIONS = NO;
+				GCC_OPTIMIZATION_LEVEL = s;
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				HEADER_SEARCH_PATHS = (
+					"../../../../orx/code/include",
+					"../../../include/Scroll",
+					"../../../include",
+				);
+				LIBRARY_SEARCH_PATHS = (
+					"../../../../orx/code/lib/dynamic",
+				);
+				OBJROOT = "obj/Universal64/Bundle";
+				ONLY_ACTIVE_ARCH = NO;
+				OTHER_CFLAGS = (
+					"-ffast-math",
+					"-stdlib=libc++",
+					"-gdwarf-2",
+					"-Wno-unused-function",
+					"-Wno-write-strings",
+				);
+				OTHER_LDFLAGS = (
+					"-lorx",
+					"-stdlib=libc++",
+					"-dead_strip",
+				);
+				STANDARD_C_PLUS_PLUS_LIBRARY_TYPE = static;
+				SYMROOT = "../../../bin";
+			};
+			name = "Bundle 64-bit Universal";
+		};
+		1F716F46127D4D1B433F69DE /* Bundle Native 64-bit */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = "x86_64";
+				CONFIGURATION_BUILD_DIR = "$(SYMROOT)";
+				CONFIGURATION_TEMP_DIR = "$(OBJROOT)";
+				COPY_PHASE_STRIP = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_ENABLE_CPP_EXCEPTIONS = NO;
+				GCC_ENABLE_CPP_RTTI = NO;
+				GCC_ENABLE_OBJC_EXCEPTIONS = NO;
+				GCC_OPTIMIZATION_LEVEL = s;
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				HEADER_SEARCH_PATHS = (
+					"../../../../orx/code/include",
+					"../../../include/Scroll",
+					"../../../include",
+				);
+				LIBRARY_SEARCH_PATHS = (
+					"../../../../orx/code/lib/dynamic",
+				);
+				OBJROOT = "obj/x64/Bundle";
+				ONLY_ACTIVE_ARCH = NO;
+				OTHER_CFLAGS = (
+					"-ffast-math",
+					"-stdlib=libc++",
+					"-gdwarf-2",
+					"-Wno-unused-function",
+					"-Wno-write-strings",
+				);
+				OTHER_LDFLAGS = (
+					"-lorx",
+					"-stdlib=libc++",
+					"-dead_strip",
+				);
+				STANDARD_C_PLUS_PLUS_LIBRARY_TYPE = static;
+				SYMROOT = "../../../bin";
+			};
+			name = "Bundle Native 64-bit";
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		078D61A819000AF032BF54F1 /* Build configuration list for PBXNativeTarget "planet-gamed" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				36EF0F38274664FA11AB7204 /* Debug 64-bit Universal */,
+				4394576D55826770011A5B9E /* Debug Native 64-bit */,
+				234B45F9761B12BE0C742FE4 /* Profile 64-bit Universal */,
+				7494288630114C4758BB7C1E /* Profile Native 64-bit */,
+				35125B9939A502EC66BD15C2 /* Release 64-bit Universal */,
+				05F93996457F18A03F6922C9 /* Release Native 64-bit */,
+				01335DE857507233311014CE /* Bundle 64-bit Universal */,
+				0B1B4E3667AC5F10475C77D2 /* Bundle Native 64-bit */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = "Debug 64-bit Universal";
+		};
+		1DEB928908733DD80010E9CD /* Build configuration list for PBXProject "planet-game" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				084579A54FB861BF73F0393A /* Debug 64-bit Universal */,
+				70BA6C63185715F062AC1B48 /* Debug Native 64-bit */,
+				5A357C9E0C7454B947AE0619 /* Profile 64-bit Universal */,
+				366B554942244A323794109E /* Profile Native 64-bit */,
+				7B2E147F2F5A53247C681424 /* Release 64-bit Universal */,
+				43A040DE59684C4C1A0900AB /* Release Native 64-bit */,
+				73F627CE60CA092F11435CCC /* Bundle 64-bit Universal */,
+				1F716F46127D4D1B433F69DE /* Bundle Native 64-bit */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = "Debug 64-bit Universal";
+		};
+/* End XCConfigurationList section */
+
+	};
+	rootObject = 08FB7793FE84155DC02AAC07 /* Project object */;
+}
