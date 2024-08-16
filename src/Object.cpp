@@ -106,9 +106,9 @@ void game::Planet::OnPlanetCollide(ScrollObject *_poCollider)
 {
   PushConfigSection();
   auto stay = orxConfig_GetBool("Stay");
-  PopConfigSection();
+  auto hasNext = orxConfig_HasValue("Next");
 
-  if (!stay && GetLifeTime() != 0 && _poCollider->GetLifeTime() != 0)
+  if (hasNext && !stay && GetLifeTime() != 0 && _poCollider->GetLifeTime() != 0)
   {
     // Both objects go away!
     SetLifeTime(0);
@@ -121,24 +121,26 @@ void game::Planet::OnPlanetCollide(ScrollObject *_poCollider)
     orxVector_Add(&pos, &pos, &colliderPos);
     orxVector_Divf(&pos, &pos, 2);
 
-    // Create a new planet at the midpoint!
-    PushConfigSection();
-    if (orxConfig_HasValue("Next"))
-    {
-      auto nextPlanet = orxConfig_GetString("Next");
-      auto planet = orxObject_CreateFromConfig(nextPlanet);
-      orxObject_SetWorldPosition(planet, &pos);
+    // Create the next planet at the midpoint of the two colliding planets
+    auto nextPlanet = orxConfig_GetString("Next");
+    auto planet = orxObject_CreateFromConfig(nextPlanet);
+    orxObject_SetWorldPosition(planet, &pos);
 
-      orxConfig_PushSection(nextPlanet);
-      auto scoreDiff = orxConfig_GetU32("Score");
-      orxConfig_PopSection();
-      orxConfig_PushSection("Runtime");
-      auto score = orxConfig_GetU32("Score");
-      orxConfig_SetU32("Score", score + scoreDiff);
-      orxConfig_PopSection();
-    }
-    PopConfigSection();
+    // Create a sound at the location of the new planet
+    auto popSound = orxObject_CreateFromConfig("PopSound");
+    orxObject_SetWorldPosition(popSound, &pos);
+
+    // Adjust score
+    orxConfig_PushSection(nextPlanet);
+    auto scoreDiff = orxConfig_GetU32("Score");
+    orxConfig_PopSection();
+    orxConfig_PushSection("Runtime");
+    auto score = orxConfig_GetU32("Score");
+    orxConfig_SetU32("Score", score + scoreDiff);
+    orxConfig_PopSection();
   }
+
+  PopConfigSection();
 }
 
 void game::Planet::OnArenaTopCollide()

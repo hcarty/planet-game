@@ -38,7 +38,7 @@ orxSTATUS planet::Init()
   InitExtensions();
 
   // Create the scene
-  CreateObject("TitleScene");
+  CreateObject("Startup");
 
   // Done!
   return orxSTATUS_SUCCESS;
