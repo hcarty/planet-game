@@ -69,6 +69,7 @@ void game::Planet::Update(const orxCLOCK_INFO &_rstInfo)
       // Send an event signaling the Game Over state
       orxConfig_PushSection("Runtime");
       auto scene = orxOBJECT(orxStructure_Get(orxConfig_GetU64("Scene")));
+      orxConfig_PopSection();
       orxASSERT(scene != orxNULL);
       orxObject_FireTriggerRecursive(scene, "GameOver", orxNULL, 0);
 
