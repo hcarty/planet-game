@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="17.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="src">
+      <UniqueIdentifier>{E22EF52B-F7F6-C445-BF92-E264C63D84B1}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="include">
+      <UniqueIdentifier>{E32FC929-A801-8447-AA2F-3229A748F5BB}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="include\lz4">
+      <UniqueIdentifier>{0E02D171-4F2A-C54C-A7F2-8A69DD02E26C}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="include\Scroll">
+      <UniqueIdentifier>{77ADFB3A-71BA-AF4A-B243-C8B8591C9C94}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="bundle">
+      <UniqueIdentifier>{76638D05-4674-484E-AE13-54C446D08CD5}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="build">
+      <UniqueIdentifier>{3BDEC8FF-9180-FF49-ABCA-E36C4E7CF991}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="config">
+      <UniqueIdentifier>{2C4EB0AD-9795-6E4E-819B-D141B21F58AF}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="..\..\..\include\orxBundleData.inc">
+      <Filter>bundle</Filter>
+    </None>
+    <None Include="..\..\premake4.lua">
+      <Filter>build</Filter>
+    </None>
+    <None Include="..\..\..\data\config\breeserif384.ini">
+      <Filter>config</Filter>
+    </None>
+    <None Include="..\..\..\data\config\CreationTemplate.ini">
+      <Filter>config</Filter>
+    </None>
+    <None Include="..\..\..\data\config\ExtensionTemplate.ini">
+      <Filter>config</Filter>
+    </None>
+    <None Include="..\..\..\data\config\planet.ini">
+      <Filter>config</Filter>
+    </None>
+    <None Include="..\..\..\data\config\planetd.ini">
+      <Filter>config</Filter>
+    </None>
+    <None Include="..\..\..\data\config\planetp.ini">
+      <Filter>config</Filter>
+    </None>
+    <None Include="..\..\..\data\config\SettingsTemplate.ini">
+      <Filter>config</Filter>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\..\..\include\Object.h">
+      <Filter>include</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\include\orxBundle.h">
+      <Filter>include</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\include\orxExtensions.h">
+      <Filter>include</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\include\planet.h">
+      <Filter>include</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\include\lz4\lz4.h">
+      <Filter>include\lz4</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\include\lz4\lz4hc.h">
+      <Filter>include\lz4</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\include\Scroll\Scroll.h">
+      <Filter>include\Scroll</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\include\Scroll\ScrollBase.h">
+      <Filter>include\Scroll</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\include\Scroll\ScrollObject.h">
+      <Filter>include\Scroll</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="..\..\..\src\Object.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\planet.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+  </ItemGroup>
+</Project>

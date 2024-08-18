@@ -207,7 +207,8 @@ solution "planet"
         buildoptions
         {
             "/MP",
-            "/EHsc"
+            "/EHsc",
+            "/std:c++20"
         }
 
     configuration {"windows", "gmake", "x32"}
