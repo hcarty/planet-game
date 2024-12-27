@@ -44,7 +44,7 @@ namespace
       return false;
     }
 
-    return EqualContent(a->GetModelName(), b->GetModelName());
+    return EqualContent(a->GetName(), b->GetName());
   }
 }
 
@@ -88,7 +88,7 @@ void game::Planet::OnCollide(ScrollObject *_poCollider, orxBODY_PART *_pstPart, 
     OnPlanetCollide(_poCollider);
   }
 
-  if (EqualContent(_poCollider->GetModelName(), "ArenaTop"))
+  if (EqualContent(_poCollider->GetName(), "ArenaTop"))
   {
     OnArenaTopCollide();
   }
@@ -96,7 +96,7 @@ void game::Planet::OnCollide(ScrollObject *_poCollider, orxBODY_PART *_pstPart, 
 
 void game::Planet::OnSeparate(ScrollObject *_poCollider, orxBODY_PART *_pstPart, orxBODY_PART *_pstColliderPart)
 {
-  if (EqualContent(_poCollider->GetModelName(), "ArenaTop"))
+  if (EqualContent(_poCollider->GetName(), "ArenaTop"))
   {
     OnArenaTopSeparate();
   }

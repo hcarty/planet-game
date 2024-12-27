@@ -37,6 +37,9 @@ orxSTATUS planet::Init()
   // Init extensions
   InitExtensions();
 
+  // Create viewport
+  orxViewport_CreateFromConfig("MainViewport");
+
   // Create the scene
   CreateObject("Startup");
 

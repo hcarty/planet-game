@@ -1,19 +1,141 @@
 {
   "version": "2.0.0",
+  "presentation": {
+    "reveal": "always",
+    "revealProblems": "onProblem"
+  },
+  "type": "shell",
+  "linux": {
+    "options": {
+      "cwd": "build/linux/gmake/",
+      "problemMatcher": {
+        "base": "$gcc",
+        "fileLocation": [
+          "relative",
+          "${workspaceFolder}/build/linux/gmake/"
+        ]
+      }
+    }
+  },
+  "osx": {
+    "options": {
+      "cwd": "build/mac/gmake/",
+      "problemMatcher": {
+        "base": "$gcc",
+        "fileLocation": [
+          "relative",
+          "${workspaceFolder}/build/mac/gmake/"
+        ]
+      }
+    }
+  },
+  "windows": {
+    "options": {
+      "cwd": "build/windows/gmake/",
+      "shell": {
+        "executable": "cmd.exe",
+        "args": [
+          "/d",
+          "/c"
+        ]
+      },
+      "problemMatcher": {
+        "base": "$gcc",
+        "fileLocation": [
+          "relative",
+          "${workspaceFolder}/build/windows/gmake/"
+        ]
+      }
+    }
+  },
   "tasks": [
     {
-      "label": "Update premake build",
+      "label": "Refresh planet project files",
       "group": "build",
-      "type": "process",
-      "command": "premake4",
+      "type": "shell",
+      "command": "./premake4",
+      "windows": {
+        "command": "premake4.exe gmake"
+      },
       "options": {
-        "cwd": "build/"
+        "cwd": "${workspaceFolder}/build/"
       }
     },
     {
-      "label": "Run (debug)",
+      "label": "Build planet (debug, profile, release)",
+      "dependsOrder": "sequence",
       "dependsOn": [
-        "Build (debug)"
+        "Build planet (debug)",
+        "Build planet (profile)",
+        "Build planet (release)"
+      ],
+      "problemMatcher": "$gcc"
+    },
+    {
+      "label": "Build planet (debug)",
+      "group": {
+        "kind": "build",
+        "isDefault": true
+      },
+      "linux": {
+        "command": "make -j config=debug64",
+      },
+      "osx": {
+        "command": "make -j config=debuguniv64"
+      },
+      "windows": {
+        "command": "mingw32-make.exe -j config=debug64"
+      }
+    },
+    {
+      "label": "Build planet (profile)",
+      "group": "build",
+      "type": "shell",
+      "linux": {
+        "command": "make -j config=profile64"
+      },
+      "osx": {
+        "command": "make -j config=profileuniv64"
+      },
+      "windows": {
+        "command": "mingw32-make.exe -j config=profile64"
+      }
+    },
+    {
+      "label": "Build planet (release)",
+      "group": "build",
+      "type": "shell",
+      "linux": {
+        "command": "make -j config=release64"
+      },
+      "osx": {
+        "command": "make -j config=releaseuniv64"
+      },
+      "windows": {
+        "command": "mingw32-make.exe -j config=release64"
+      }
+    },
+    {
+      "label": "Build planet (web)",
+      "dependsOn": [
+        "Build planet (release)"
+      ],
+      "group": "build",
+      "type": "shell",
+      "linux": {
+        "command": "make -j config=releaseweb"
+      },
+      "osx": {
+        "command": "make -j config=releaseweb"
+      },
+      "windows": {
+        "command": "mingw32-make.exe -j config=releaseweb"
+      }
+    },
+    {
+      "label": "Run planet (debug)",
+      "dependsOn": [
+        "Build planet (debug)"
       ],
       "group": {
         "kind": "test",
@@ -21,29 +143,17 @@
       },
       "type": "process",
       "command": "planetd",
-      "options": {
-        "cwd": "bin/"
-      }
-    },
-    {
-      "label": "Run (release)",
-      "dependsOn": [
-        "Build (release)"
-      ],
-      "group": {
-        "kind": "test",
-        "isDefault": false
+      "windows": {
+        "command": "planetd.exe"
       },
-      "type": "process",
-      "command": "planet",
       "options": {
-        "cwd": "bin/"
+        "cwd": "${workspaceFolder}/bin/"
       }
     },
     {
-      "label": "Run (profile)",
+      "label": "Run planet (profile)",
       "dependsOn": [
-        "Build (profile)"
+        "Build planet (profile)"
       ],
       "group": {
         "kind": "test",
@@ -51,121 +161,45 @@
       },
       "type": "process",
       "command": "planetp",
+      "windows": {
+        "command": "planetp.exe"
+      },
       "options": {
-        "cwd": "bin/"
+        "cwd": "${workspaceFolder}/bin/"
       }
     },
     {
-      "label": "Build (debug, profile, release)",
-      "dependsOrder": "sequence",
+      "label": "Run planet (release)",
       "dependsOn": [
-        "Build (debug)",
-        "Build (profile)",
-        "Build (release)"
+        "Build planet (release)"
       ],
-      "problemMatcher": [
-        "$gcc"
-      ]
-    },
-    {
-      "label": "Build (debug)",
       "group": {
-        "kind": "build",
-        "isDefault": true
+        "kind": "test",
+        "isDefault": false
       },
-      "type": "shell",
-      "linux": {
-        "command": "make -j",
-        "options": {
-          "cwd": "build/linux/gmake/"
-        }
-      },
-      "osx": {
-        "command": "make -j",
-        "options": {
-          "cwd": "build/mac/gmake/"
-        }
-      },
+      "type": "process",
+      "command": "planet",
       "windows": {
-        "command": "mingw32-make.exe",
-        "options": {
-          "cwd": "build/windows/gmake/",
-          "shell": {
-            "executable": "cmd.exe",
-            "args": [
-              "/d",
-              "/c"
-            ]
-          }
-        }
+        "command": "planet.exe"
       },
-      "problemMatcher": [
-        "$gcc"
-      ]
+      "options": {
+        "cwd": "${workspaceFolder}/bin/"
+      }
     },
     {
-      "label": "Build (profile)",
-      "group": "build",
+      "label": "Run planet (web)",
+      "dependsOn": [
+        "Build planet (web)"
+      ],
+      "group": {
+        "kind": "test",
+        "isDefault": false
+      },
       "type": "shell",
-      "command": "make -j config=profile64",
-      "linux": {
-        "options": {
-          "cwd": "build/linux/gmake/"
-        }
-      },
-      "osx": {
-        "options": {
-          "cwd": "build/mac/gmake/"
-        }
-      },
-      "windows": {
-        "command": "mingw32-make.exe config=profile64",
-        "options": {
-          "cwd": "build/windows/gmake/",
-          "shell": {
-            "executable": "cmd.exe",
-            "args": [
-              "/d",
-              "/c"
-            ]
-          }
-        }
-      },
-      "problemMatcher": [
-        "$gcc"
-      ]
-    },
-    {
-      "label": "Build (release)",
-      "group": "build",
-      "type": "shell",
-      "command": "make -j config=release64",
-      "linux": {
-        "options": {
-          "cwd": "build/linux/gmake/"
-        }
-      },
-      "osx": {
-        "options": {
-          "cwd": "build/mac/gmake/"
-        }
-      },
-      "windows": {
-        "command": "mingw32-make.exe config=release64",
-        "options": {
-          "cwd": "build/windows/gmake/",
-          "shell": {
-            "executable": "cmd.exe",
-            "args": [
-              "/d",
-              "/c"
-            ]
-          }
-        }
-      },
-      "problemMatcher": [
-        "$gcc"
-      ]
+      "command": "emrun planet.html",
+      "options": {
+        "cwd": "${workspaceFolder}/bin/web/"
+      }
     }
   ]
 }

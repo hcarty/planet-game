@@ -24,7 +24,7 @@ ifeq ($(config),debuguniv64)
   TARGETDIR  = ../../../bin
   TARGET     = $(TARGETDIR)/planetd
   DEFINES   += -D__orxDEBUG__
-  INCLUDES  += -I$(ORX)/include -I../../../include/Scroll -I../../../include
+  INCLUDES  += -I$(ORX)/include -I../../../include/extensions -I../../../include
   ALL_CPPFLAGS  += $(CPPFLAGS) -MMD -MP $(DEFINES) $(INCLUDES)
   ALL_CFLAGS    += $(CFLAGS) $(ALL_CPPFLAGS) -ffast-math -g -arch x86_64 -arch arm64 -stdlib=libc++ -gdwarf-2 -Wno-unused-function -Wno-write-strings -std=c++20
   ALL_CXXFLAGS  += $(CXXFLAGS) $(ALL_CFLAGS) -fno-exceptions
@@ -48,7 +48,7 @@ ifeq ($(config),profileuniv64)
   TARGETDIR  = ../../../bin
   TARGET     = $(TARGETDIR)/planetp
   DEFINES   += -D__orxPROFILER__
-  INCLUDES  += -I$(ORX)/include -I../../../include/Scroll -I../../../include
+  INCLUDES  += -I$(ORX)/include -I../../../include/extensions -I../../../include
   ALL_CPPFLAGS  += $(CPPFLAGS) -MMD -MP $(DEFINES) $(INCLUDES)
   ALL_CFLAGS    += $(CFLAGS) $(ALL_CPPFLAGS) -ffast-math -g -O2 -arch x86_64 -arch arm64 -stdlib=libc++ -gdwarf-2 -Wno-unused-function -Wno-write-strings -std=c++20
   ALL_CXXFLAGS  += $(CXXFLAGS) $(ALL_CFLAGS) -fno-exceptions -fno-rtti
@@ -72,7 +72,7 @@ ifeq ($(config),releaseuniv64)
   TARGETDIR  = ../../../bin
   TARGET     = $(TARGETDIR)/planet
   DEFINES   +=
-  INCLUDES  += -I$(ORX)/include -I../../../include/Scroll -I../../../include
+  INCLUDES  += -I$(ORX)/include -I../../../include/extensions -I../../../include
   ALL_CPPFLAGS  += $(CPPFLAGS) -MMD -MP $(DEFINES) $(INCLUDES)
   ALL_CFLAGS    += $(CFLAGS) $(ALL_CPPFLAGS) -ffast-math -g -O2 -arch x86_64 -arch arm64 -stdlib=libc++ -gdwarf-2 -Wno-unused-function -Wno-write-strings -std=c++20
   ALL_CXXFLAGS  += $(CXXFLAGS) $(ALL_CFLAGS) -fno-exceptions -fno-rtti
@@ -96,7 +96,7 @@ ifeq ($(config),bundleuniv64)
   TARGETDIR  = ../../../bin
   TARGET     = $(TARGETDIR)/planet
   DEFINES   +=
-  INCLUDES  += -I$(ORX)/include -I../../../include/Scroll -I../../../include
+  INCLUDES  += -I$(ORX)/include -I../../../include/extensions -I../../../include
   ALL_CPPFLAGS  += $(CPPFLAGS) -MMD -MP $(DEFINES) $(INCLUDES)
   ALL_CFLAGS    += $(CFLAGS) $(ALL_CPPFLAGS) -ffast-math -g -O2 -arch x86_64 -arch arm64 -stdlib=libc++ -gdwarf-2 -Wno-unused-function -Wno-write-strings -std=c++20
   ALL_CXXFLAGS  += $(CXXFLAGS) $(ALL_CFLAGS) -fno-exceptions -fno-rtti
@@ -120,7 +120,7 @@ ifeq ($(config),debug64)
   TARGETDIR  = ../../../bin
   TARGET     = $(TARGETDIR)/planetd
   DEFINES   += -D__orxDEBUG__
-  INCLUDES  += -I$(ORX)/include -I../../../include/Scroll -I../../../include
+  INCLUDES  += -I$(ORX)/include -I../../../include/extensions -I../../../include
   ALL_CPPFLAGS  += $(CPPFLAGS) -MMD -MP $(DEFINES) $(INCLUDES)
   ALL_CFLAGS    += $(CFLAGS) $(ALL_CPPFLAGS) -ffast-math -g -m64 -stdlib=libc++ -gdwarf-2 -Wno-unused-function -Wno-write-strings -std=c++20
   ALL_CXXFLAGS  += $(CXXFLAGS) $(ALL_CFLAGS) -fno-exceptions
@@ -144,7 +144,7 @@ ifeq ($(config),profile64)
   TARGETDIR  = ../../../bin
   TARGET     = $(TARGETDIR)/planetp
   DEFINES   += -D__orxPROFILER__
-  INCLUDES  += -I$(ORX)/include -I../../../include/Scroll -I../../../include
+  INCLUDES  += -I$(ORX)/include -I../../../include/extensions -I../../../include
   ALL_CPPFLAGS  += $(CPPFLAGS) -MMD -MP $(DEFINES) $(INCLUDES)
   ALL_CFLAGS    += $(CFLAGS) $(ALL_CPPFLAGS) -ffast-math -g -O2 -m64 -stdlib=libc++ -gdwarf-2 -Wno-unused-function -Wno-write-strings -std=c++20
   ALL_CXXFLAGS  += $(CXXFLAGS) $(ALL_CFLAGS) -fno-exceptions -fno-rtti
@@ -168,7 +168,7 @@ ifeq ($(config),release64)
   TARGETDIR  = ../../../bin
   TARGET     = $(TARGETDIR)/planet
   DEFINES   +=
-  INCLUDES  += -I$(ORX)/include -I../../../include/Scroll -I../../../include
+  INCLUDES  += -I$(ORX)/include -I../../../include/extensions -I../../../include
   ALL_CPPFLAGS  += $(CPPFLAGS) -MMD -MP $(DEFINES) $(INCLUDES)
   ALL_CFLAGS    += $(CFLAGS) $(ALL_CPPFLAGS) -ffast-math -g -O2 -m64 -stdlib=libc++ -gdwarf-2 -Wno-unused-function -Wno-write-strings -std=c++20
   ALL_CXXFLAGS  += $(CXXFLAGS) $(ALL_CFLAGS) -fno-exceptions -fno-rtti
@@ -192,7 +192,7 @@ ifeq ($(config),bundle64)
   TARGETDIR  = ../../../bin
   TARGET     = $(TARGETDIR)/planet
   DEFINES   +=
-  INCLUDES  += -I$(ORX)/include -I../../../include/Scroll -I../../../include
+  INCLUDES  += -I$(ORX)/include -I../../../include/extensions -I../../../include
   ALL_CPPFLAGS  += $(CPPFLAGS) -MMD -MP $(DEFINES) $(INCLUDES)
   ALL_CFLAGS    += $(CFLAGS) $(ALL_CPPFLAGS) -ffast-math -g -O2 -m64 -stdlib=libc++ -gdwarf-2 -Wno-unused-function -Wno-write-strings -std=c++20
   ALL_CXXFLAGS  += $(CXXFLAGS) $(ALL_CFLAGS) -fno-exceptions -fno-rtti
@@ -208,6 +208,122 @@ ifeq ($(config),bundle64)
   define POSTBUILDCMDS
 	@echo Running post-build commands
 	cp -f $(ORX)/lib/dynamic/liborx*.dylib ../../../bin
+  endef
+endif
+
+ifeq ($(config),debugweb)
+  CC         = emcc
+  CXX        = em++
+  AR         = emar
+  OBJDIR     = obj/Web/Debug
+  TARGETDIR  = ../../../bin/web
+  TARGET     = $(TARGETDIR)/planet.html
+  DEFINES   += -D__orxDEBUG__
+  INCLUDES  += -I$(ORX)/include -I../../../include/extensions -I../../../include
+  ALL_CPPFLAGS  += $(CPPFLAGS) -MMD -MP $(DEFINES) $(INCLUDES)
+  ALL_CFLAGS    += $(CFLAGS) $(ALL_CPPFLAGS) -ffast-math -g -DorxWEB_EXECUTABLE_NAME='"planet.wasm"' -pthread
+  ALL_CXXFLAGS  += $(CXXFLAGS) $(ALL_CFLAGS) -fno-exceptions
+  ALL_RESFLAGS  += $(RESFLAGS) $(DEFINES) $(INCLUDES)
+  ALL_LDFLAGS   += $(LDFLAGS) -L$(ORX)/lib/static/web -L$(ORX)/../extern/emscripten-glfw/lib -L$(ORX)/../extern/basisu/lib/web -L$(ORX)/../extern/libwebp/lib/web -L$(ORX)/../extern/LiquidFun-1.1.0/lib/web -L. --preload-file ../../../build/planet.obr@/ -sPTHREAD_POOL_SIZE=navigator.hardwareConcurrency -sAUDIO_WORKLET=1 -sWASM_WORKERS=1 -sASYNCIFY -sALLOW_MEMORY_GROWTH -sFULL_ES3=1 -pthread -lidbfs.js $(ORX)/../extern/emscripten-glfw/lib/libglfw3.a --js-library $(ORX)/../extern/emscripten-glfw/lib/lib_emscripten_glfw3.js -gsource-map
+  LIBS      += -lorxd -lbasisu -lwebpdecoder -lliquidfun
+  LDDEPS    +=
+  LINKCMD    = $(CXX) -o $(TARGET) $(OBJECTS) $(ALL_LDFLAGS) $(LIBS)
+  define PREBUILDCMDS
+  endef
+  define PRELINKCMDS
+	@echo Running pre-link commands
+	cd ../../../bin && ./planet -b ../build/planet.obr
+  endef
+  define POSTBUILDCMDS
+	@echo Running post-build commands
+	rm ../../../build/planet.obr
+  endef
+endif
+
+ifeq ($(config),profileweb)
+  CC         = emcc
+  CXX        = em++
+  AR         = emar
+  OBJDIR     = obj/Web/Profile
+  TARGETDIR  = ../../../bin/web
+  TARGET     = $(TARGETDIR)/planet.html
+  DEFINES   += -D__orxPROFILER__
+  INCLUDES  += -I$(ORX)/include -I../../../include/extensions -I../../../include
+  ALL_CPPFLAGS  += $(CPPFLAGS) -MMD -MP $(DEFINES) $(INCLUDES)
+  ALL_CFLAGS    += $(CFLAGS) $(ALL_CPPFLAGS) -ffast-math -g -O2 -DorxWEB_EXECUTABLE_NAME='"planet.wasm"' -pthread
+  ALL_CXXFLAGS  += $(CXXFLAGS) $(ALL_CFLAGS) -fno-exceptions -fno-rtti
+  ALL_RESFLAGS  += $(RESFLAGS) $(DEFINES) $(INCLUDES)
+  ALL_LDFLAGS   += $(LDFLAGS) -L$(ORX)/lib/static/web -L$(ORX)/../extern/emscripten-glfw/lib -L$(ORX)/../extern/basisu/lib/web -L$(ORX)/../extern/libwebp/lib/web -L$(ORX)/../extern/LiquidFun-1.1.0/lib/web -L. --preload-file ../../../build/planet.obr@/ -sPTHREAD_POOL_SIZE=navigator.hardwareConcurrency -sAUDIO_WORKLET=1 -sWASM_WORKERS=1 -sASYNCIFY -sALLOW_MEMORY_GROWTH -sFULL_ES3=1 -pthread -lidbfs.js $(ORX)/../extern/emscripten-glfw/lib/libglfw3.a --js-library $(ORX)/../extern/emscripten-glfw/lib/lib_emscripten_glfw3.js -O2
+  LIBS      += -lorxp -lbasisu -lwebpdecoder -lliquidfun
+  LDDEPS    +=
+  LINKCMD    = $(CXX) -o $(TARGET) $(OBJECTS) $(ALL_LDFLAGS) $(LIBS)
+  define PREBUILDCMDS
+  endef
+  define PRELINKCMDS
+	@echo Running pre-link commands
+	cd ../../../bin && ./planet -b ../build/planet.obr
+  endef
+  define POSTBUILDCMDS
+	@echo Running post-build commands
+	rm ../../../build/planet.obr
+  endef
+endif
+
+ifeq ($(config),releaseweb)
+  CC         = emcc
+  CXX        = em++
+  AR         = emar
+  OBJDIR     = obj/Web/Release
+  TARGETDIR  = ../../../bin/web
+  TARGET     = $(TARGETDIR)/planet.html
+  DEFINES   +=
+  INCLUDES  += -I$(ORX)/include -I../../../include/extensions -I../../../include
+  ALL_CPPFLAGS  += $(CPPFLAGS) -MMD -MP $(DEFINES) $(INCLUDES)
+  ALL_CFLAGS    += $(CFLAGS) $(ALL_CPPFLAGS) -ffast-math -g -O2 -DorxWEB_EXECUTABLE_NAME='"planet.wasm"' -pthread
+  ALL_CXXFLAGS  += $(CXXFLAGS) $(ALL_CFLAGS) -fno-exceptions -fno-rtti
+  ALL_RESFLAGS  += $(RESFLAGS) $(DEFINES) $(INCLUDES)
+  ALL_LDFLAGS   += $(LDFLAGS) -L$(ORX)/lib/static/web -L$(ORX)/../extern/emscripten-glfw/lib -L$(ORX)/../extern/basisu/lib/web -L$(ORX)/../extern/libwebp/lib/web -L$(ORX)/../extern/LiquidFun-1.1.0/lib/web -L. --preload-file ../../../build/planet.obr@/ -sPTHREAD_POOL_SIZE=navigator.hardwareConcurrency -sAUDIO_WORKLET=1 -sWASM_WORKERS=1 -sASYNCIFY -sALLOW_MEMORY_GROWTH -sFULL_ES3=1 -pthread -lidbfs.js $(ORX)/../extern/emscripten-glfw/lib/libglfw3.a --js-library $(ORX)/../extern/emscripten-glfw/lib/lib_emscripten_glfw3.js -O2
+  LIBS      += -lorx -lbasisu -lwebpdecoder -lliquidfun
+  LDDEPS    +=
+  LINKCMD    = $(CXX) -o $(TARGET) $(OBJECTS) $(ALL_LDFLAGS) $(LIBS)
+  define PREBUILDCMDS
+  endef
+  define PRELINKCMDS
+	@echo Running pre-link commands
+	cd ../../../bin && ./planet -b ../build/planet.obr
+  endef
+  define POSTBUILDCMDS
+	@echo Running post-build commands
+	rm ../../../build/planet.obr
+  endef
+endif
+
+ifeq ($(config),bundleweb)
+  CC         = emcc
+  CXX        = em++
+  AR         = emar
+  OBJDIR     = obj/Web/Bundle
+  TARGETDIR  = ../../../bin/web
+  TARGET     = $(TARGETDIR)/planet.html
+  DEFINES   +=
+  INCLUDES  += -I$(ORX)/include -I../../../include/extensions -I../../../include
+  ALL_CPPFLAGS  += $(CPPFLAGS) -MMD -MP $(DEFINES) $(INCLUDES)
+  ALL_CFLAGS    += $(CFLAGS) $(ALL_CPPFLAGS) -ffast-math -g -O2 -DorxWEB_EXECUTABLE_NAME='"planet.wasm"' -pthread
+  ALL_CXXFLAGS  += $(CXXFLAGS) $(ALL_CFLAGS) -fno-exceptions -fno-rtti
+  ALL_RESFLAGS  += $(RESFLAGS) $(DEFINES) $(INCLUDES)
+  ALL_LDFLAGS   += $(LDFLAGS) -L$(ORX)/lib/static/web -L$(ORX)/../extern/emscripten-glfw/lib -L$(ORX)/../extern/basisu/lib/web -L$(ORX)/../extern/libwebp/lib/web -L$(ORX)/../extern/LiquidFun-1.1.0/lib/web -L. --preload-file ../../../build/planet.obr@/ -sPTHREAD_POOL_SIZE=navigator.hardwareConcurrency -sAUDIO_WORKLET=1 -sWASM_WORKERS=1 -sASYNCIFY -sALLOW_MEMORY_GROWTH -sFULL_ES3=1 -pthread -lidbfs.js $(ORX)/../extern/emscripten-glfw/lib/libglfw3.a --js-library $(ORX)/../extern/emscripten-glfw/lib/lib_emscripten_glfw3.js
+  LIBS      += -lorx -lbasisu -lwebpdecoder -lliquidfun
+  LDDEPS    +=
+  LINKCMD    = $(CXX) -o $(TARGET) $(OBJECTS) $(ALL_LDFLAGS) $(LIBS)
+  define PREBUILDCMDS
+  endef
+  define PRELINKCMDS
+	@echo Running pre-link commands
+	cd ../../../bin && ./planet -b ../build/planet.obr
+  endef
+  define POSTBUILDCMDS
+	@echo Running post-build commands
+	rm ../../../build/planet.obr
   endef
 endif
 
@@ -227,10 +343,10 @@ endif
 
 .PHONY: clean prebuild prelink
 
-all: $(TARGETDIR) $(OBJDIR) prebuild prelink $(TARGET)
+all: $(TARGETDIR) $(OBJDIR) $(TARGET)
 	@:
 
-$(TARGET): $(GCH) $(OBJECTS) $(LDDEPS) $(RESOURCES)
+$(TARGET): prebuild $(GCH) $(OBJECTS) $(LDDEPS) $(RESOURCES) prelink
 	@echo Linking planet
 	$(SILENT) $(LINKCMD)
 	$(POSTBUILDCMDS)

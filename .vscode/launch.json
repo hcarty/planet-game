@@ -5,7 +5,7 @@
   "version": "0.2.0",
   "configurations": [
     {
-      "name": "(lldb) Launch",
+      "name": "Debug (lldb/gdb)",
       "type": "cppdbg",
       "request": "launch",
       "program": "${workspaceFolder}/bin/planetd",
@@ -14,8 +14,16 @@
       "cwd": "${workspaceFolder}",
       "environment": [],
       "externalConsole": false,
-      "MIMode": "lldb",
-      "preLaunchTask": "Build (debug)"
+      "preLaunchTask": "Build planet (debug)",
+      "linux": {
+        "MIMode": "gdb"
+      },
+      "osx": {
+        "MIMode": "lldb"
+      },
+      "windows": {
+        "MIMode": "gdb"
+      }
     }
   ]
 }
