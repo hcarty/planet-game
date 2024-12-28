@@ -56,10 +56,11 @@ namespace game
     void UpdatePosition(const orxCLOCK_INFO &_rstInfo);
 
     void CreatePlanet();
-    void DropPlanet();
+    void DropPlanet(orxOBJECT *planet);
 
+    orxOBJECT *amIActive{orxNULL};
     bool first{true};
-    orxOBJECT *latest{orxNULL};
+    orxU64 pendingPlanetGUID{orxU64_UNDEFINED};
     orxFLOAT dtSinceDrop{0.0};
   };
 }

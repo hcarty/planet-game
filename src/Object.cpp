@@ -157,6 +157,9 @@ void game::Planet::OnArenaTopSeparate()
 
 void game::Dropper::OnCreate()
 {
+  amIActive = orxObject_FindChild(GetOrxObject(), "AmIActive");
+  orxASSERT(amIActive != orxNULL);
+
   Object::OnCreate();
 }
 
@@ -198,28 +201,28 @@ void game::Dropper::UpdatePosition(const orxCLOCK_INFO &_rstInfo)
   SetPosition(position);
 }
 
-void game::Dropper::DropPlanet()
+void game::Dropper::DropPlanet(orxOBJECT *planet)
 {
   // Planet must be present for it to be dropped
-  orxASSERT(latest);
-
-  // Get the config name of the current planet
-  auto name = orxObject_GetName(latest);
+  orxASSERT(planet);
 
   // Remove placeholder planet object
-  orxObject_SetLifeTime(latest, 0);
-  // Mark our held object as gone
-  latest = orxNULL;
+  orxObject_SetLifeTime(planet, 0);
 
-  // Create a replacement "real" object which will drop
-  auto planet = orxObject_CreateFromConfig(name);
+  // Create a replacement "real" object which will drop from the same position as the placeholder
+  auto dropPlanet = orxObject_CreateFromConfig(orxObject_GetName(planet));
   orxVECTOR position = orxVECTOR_0;
   GetPosition(position);
-  orxObject_SetPosition(planet, &position);
+  orxObject_SetPosition(dropPlanet, &position);
 }
 
 void game::Dropper::Update(const orxCLOCK_INFO &_rstInfo)
 {
+  if (orxObject_IsPaused(amIActive))
+  {
+    return;
+  }
+
   PushConfigSection();
   const auto minDropWaitTime = orxConfig_GetFloat("MinDropWait");
   PopConfigSection();
@@ -228,15 +231,18 @@ void game::Dropper::Update(const orxCLOCK_INFO &_rstInfo)
   UpdatePosition(_rstInfo);
 
   // Drop current planet if we have one
-  if (latest && orxInput_HasBeenActivated("Drop"))
+  if (orxInput_HasBeenActivated("Drop"))
   {
-    DropPlanet();
+    if (auto planet = orxOBJECT(orxStructure_Get(pendingPlanetGUID)))
+    {
+      DropPlanet(planet);
+      pendingPlanetGUID = orxU64_UNDEFINED;
+    }
   }
 
   // Create a planet if it's been long enough since we dropped one
-  if (!latest)
+  if (pendingPlanetGUID == orxU64_UNDEFINED)
   {
-
     dtSinceDrop += _rstInfo.fDT;
     if (first || dtSinceDrop > minDropWaitTime)
     {
@@ -251,17 +257,20 @@ void game::Dropper::Update(const orxCLOCK_INFO &_rstInfo)
 
 void game::Dropper::CreatePlanet()
 {
-  orxASSERT(latest == orxNULL);
+  orxASSERT(pendingPlanetGUID == orxU64_UNDEFINED);
 
   orxVECTOR position = orxVECTOR_0;
   GetPosition(position, orxTRUE);
 
   PushConfigSection();
-  latest = orxObject_CreateFromConfig(orxConfig_GetString("Drop"));
+  auto planet = orxObject_CreateFromConfig(orxConfig_GetString("Drop"));
   PopConfigSection();
 
   // Remove physics body so we can safely set this as a child object
-  orxObject_UnlinkStructure(latest, orxSTRUCTURE_ID_BODY);
+  orxObject_UnlinkStructure(planet, orxSTRUCTURE_ID_BODY);
 
-  orxObject_SetParent(latest, GetOrxObject());
+  orxObject_SetParent(planet, GetOrxObject());
+
+  // Track GUID of the planet
+  pendingPlanetGUID = orxStructure_GetGUID(planet);
 }
