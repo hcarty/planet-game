@@ -211,7 +211,8 @@ solution "planet"
     configuration {"linux", "not web"}
         buildoptions
         {
-            "-Wno-unused-function"
+            "-Wno-unused-function",
+            "-std=c++20"
         }
         linkoptions {"-Wl,-rpath ./", "-Wl,--export-dynamic"}
         links
