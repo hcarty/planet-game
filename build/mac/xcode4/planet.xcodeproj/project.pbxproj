@@ -7,159 +7,159 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		30C97E9041C327AE2AE25C43 /* Object.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 33D9134954382CB412E510D9 /* Object.cpp */; };
-		318318875A65223F640C7E70 /* planet.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7252685A769015944C482ACF /* planet.cpp */; };
-		67962BD73E1E60AA49BF2AAD /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 669024DB4ED1296B32455FFB /* Foundation.framework */; };
-		783E6A9E5876685B37B77EF0 /* AppKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 53BD4A3259FD184B791E3715 /* AppKit.framework */; };
+		55D1226474557CEB299D0FEB /* Object.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 20E012296D291EFC53F531B6 /* Object.cpp */; };
+		1BC86CBF151006A6069679D4 /* planet.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 117D264D254C3C0516993100 /* planet.cpp */; };
+		69622E43489428A728C2169A /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 51587071387C6D687DBF1424 /* Foundation.framework */; };
+		211305D7718C1FD563D33A68 /* AppKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6FFF5A984A1F3AFC06ED6E55 /* AppKit.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		22394D0E7FE259D151BD7B86 /* premake4.lua */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.lua; name = "premake4.lua"; path = "../../premake4.lua"; sourceTree = "<group>"; };
-		41E122A30D4D72DB41F37A19 /* orxBundleData.inc */ = {isa = PBXFileReference; lastKnownFileType = text; name = "orxBundleData.inc"; path = "../../../include/orxBundleData.inc"; sourceTree = "<group>"; };
-		698E7050464422B942D81BB3 /* CreationTemplate.ini */ = {isa = PBXFileReference; lastKnownFileType = text; name = "CreationTemplate.ini"; path = "../../../data/config/CreationTemplate.ini"; sourceTree = "<group>"; };
-		34A53D9604166DF70DC71F86 /* ExtensionTemplate.ini */ = {isa = PBXFileReference; lastKnownFileType = text; name = "ExtensionTemplate.ini"; path = "../../../data/config/ExtensionTemplate.ini"; sourceTree = "<group>"; };
-		4BE55257794B37560D212919 /* SettingsTemplate.ini */ = {isa = PBXFileReference; lastKnownFileType = text; name = "SettingsTemplate.ini"; path = "../../../data/config/SettingsTemplate.ini"; sourceTree = "<group>"; };
-		3DA52FBA12E061F607FE3CD4 /* breeserif384.ini */ = {isa = PBXFileReference; lastKnownFileType = text; name = "breeserif384.ini"; path = "../../../data/config/breeserif384.ini"; sourceTree = "<group>"; };
-		0D7255921F3B6A0169941CF5 /* planet.ini */ = {isa = PBXFileReference; lastKnownFileType = text; name = "planet.ini"; path = "../../../data/config/planet.ini"; sourceTree = "<group>"; };
-		3B60597749A26582459A0F53 /* planetd.ini */ = {isa = PBXFileReference; lastKnownFileType = text; name = "planetd.ini"; path = "../../../data/config/planetd.ini"; sourceTree = "<group>"; };
-		30F476121F115319462135B0 /* planetp.ini */ = {isa = PBXFileReference; lastKnownFileType = text; name = "planetp.ini"; path = "../../../data/config/planetp.ini"; sourceTree = "<group>"; };
-		667867C02B8933BA34C665C9 /* web.ini */ = {isa = PBXFileReference; lastKnownFileType = text; name = "web.ini"; path = "../../../data/config/web.ini"; sourceTree = "<group>"; };
-		518B1115249F58F759A03566 /* Object.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "Object.h"; path = "../../../include/Object.h"; sourceTree = "<group>"; };
-		1FC5639444F217AB72BE4860 /* Scroll.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "Scroll.h"; path = "../../../include/extensions/Scroll/Scroll.h"; sourceTree = "<group>"; };
-		49AD011A62E768B770116F58 /* ScrollBase.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "ScrollBase.h"; path = "../../../include/extensions/Scroll/ScrollBase.h"; sourceTree = "<group>"; };
-		06CA59773B3A021E36C96821 /* ScrollObject.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "ScrollObject.h"; path = "../../../include/extensions/Scroll/ScrollObject.h"; sourceTree = "<group>"; };
-		2307483B32C01811437752D1 /* lz4.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "lz4.h"; path = "../../../include/extensions/lz4/lz4.h"; sourceTree = "<group>"; };
-		33534F326ABA6A7F5AFE637A /* lz4hc.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "lz4hc.h"; path = "../../../include/extensions/lz4/lz4hc.h"; sourceTree = "<group>"; };
-		7CCC4C435B6033E307D36099 /* orxBundle.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "orxBundle.h"; path = "../../../include/extensions/orxBundle.h"; sourceTree = "<group>"; };
-		025F5A734ECA6C9F7A821AB9 /* orxExtensions.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "orxExtensions.h"; path = "../../../include/extensions/orxExtensions.h"; sourceTree = "<group>"; };
-		6DC0033B41825AED1FAF2A97 /* planet.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "planet.h"; path = "../../../include/planet.h"; sourceTree = "<group>"; };
-		33D9134954382CB412E510D9 /* Object.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = "Object.cpp"; path = "../../../src/Object.cpp"; sourceTree = "<group>"; };
-		7252685A769015944C482ACF /* planet.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = "planet.cpp"; path = "../../../src/planet.cpp"; sourceTree = "<group>"; };
-		669024DB4ED1296B32455FFB /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = "Foundation.framework"; path = "/System/Library/Frameworks/Foundation.framework"; sourceTree = "<absolute>"; };
-		53BD4A3259FD184B791E3715 /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = "AppKit.framework"; path = "/System/Library/Frameworks/AppKit.framework"; sourceTree = "<absolute>"; };
-		35D95D44484140F71FC01690 /* planetd */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; name = "planetd"; path = "planetd"; sourceTree = BUILT_PRODUCTS_DIR; };
+		272E41AD4F1E4B0F4F25353C /* premake4.lua */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.lua; name = "premake4.lua"; path = "../../premake4.lua"; sourceTree = "<group>"; };
+		1C1A6FEC7F89100E0815249C /* orxBundleData.inc */ = {isa = PBXFileReference; lastKnownFileType = text; name = "orxBundleData.inc"; path = "../../../include/orxBundleData.inc"; sourceTree = "<group>"; };
+		4D1C26972625590C31A70A08 /* CreationTemplate.ini */ = {isa = PBXFileReference; lastKnownFileType = text; name = "CreationTemplate.ini"; path = "../../../data/config/CreationTemplate.ini"; sourceTree = "<group>"; };
+		29E5125339FB452E75A87292 /* ExtensionTemplate.ini */ = {isa = PBXFileReference; lastKnownFileType = text; name = "ExtensionTemplate.ini"; path = "../../../data/config/ExtensionTemplate.ini"; sourceTree = "<group>"; };
+		60B07DB43CB2001863AC3D80 /* SettingsTemplate.ini */ = {isa = PBXFileReference; lastKnownFileType = text; name = "SettingsTemplate.ini"; path = "../../../data/config/SettingsTemplate.ini"; sourceTree = "<group>"; };
+		5CB701583F246EE91CF35461 /* breeserif384.ini */ = {isa = PBXFileReference; lastKnownFileType = text; name = "breeserif384.ini"; path = "../../../data/config/breeserif384.ini"; sourceTree = "<group>"; };
+		413F21151C4C46144E5738BA /* planet.ini */ = {isa = PBXFileReference; lastKnownFileType = text; name = "planet.ini"; path = "../../../data/config/planet.ini"; sourceTree = "<group>"; };
+		62435A0B21D932FB0D89223E /* planetd.ini */ = {isa = PBXFileReference; lastKnownFileType = text; name = "planetd.ini"; path = "../../../data/config/planetd.ini"; sourceTree = "<group>"; };
+		1F4A50775FE1423526344DCF /* planetp.ini */ = {isa = PBXFileReference; lastKnownFileType = text; name = "planetp.ini"; path = "../../../data/config/planetp.ini"; sourceTree = "<group>"; };
+		70F7709B778962C51782122E /* web.ini */ = {isa = PBXFileReference; lastKnownFileType = text; name = "web.ini"; path = "../../../data/config/web.ini"; sourceTree = "<group>"; };
+		09BE3DCA55AE47CF0E7D68F9 /* Object.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "Object.h"; path = "../../../include/Object.h"; sourceTree = "<group>"; };
+		777D6C3D2CAA6DFF062A6EB6 /* Scroll.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "Scroll.h"; path = "../../../include/extensions/Scroll/Scroll.h"; sourceTree = "<group>"; };
+		0C1D58824B3D24D86A7327E5 /* ScrollBase.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "ScrollBase.h"; path = "../../../include/extensions/Scroll/ScrollBase.h"; sourceTree = "<group>"; };
+		69A84948435327E27ACD2E14 /* ScrollObject.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "ScrollObject.h"; path = "../../../include/extensions/Scroll/ScrollObject.h"; sourceTree = "<group>"; };
+		484429B32F5E753D2BD00FF3 /* lz4.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "lz4.h"; path = "../../../include/extensions/lz4/lz4.h"; sourceTree = "<group>"; };
+		1F606CD86B614DC544682925 /* lz4hc.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "lz4hc.h"; path = "../../../include/extensions/lz4/lz4hc.h"; sourceTree = "<group>"; };
+		49097A5B71BD5910624F58AE /* orxBundle.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "orxBundle.h"; path = "../../../include/extensions/orxBundle.h"; sourceTree = "<group>"; };
+		1EB443977B0F281E72426B52 /* orxExtensions.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "orxExtensions.h"; path = "../../../include/extensions/orxExtensions.h"; sourceTree = "<group>"; };
+		7DAD0E591AB027C66707305E /* planet.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "planet.h"; path = "../../../include/planet.h"; sourceTree = "<group>"; };
+		20E012296D291EFC53F531B6 /* Object.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = "Object.cpp"; path = "../../../src/Object.cpp"; sourceTree = "<group>"; };
+		117D264D254C3C0516993100 /* planet.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = "planet.cpp"; path = "../../../src/planet.cpp"; sourceTree = "<group>"; };
+		51587071387C6D687DBF1424 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = "Foundation.framework"; path = "/System/Library/Frameworks/Foundation.framework"; sourceTree = "<absolute>"; };
+		6FFF5A984A1F3AFC06ED6E55 /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = "AppKit.framework"; path = "/System/Library/Frameworks/AppKit.framework"; sourceTree = "<absolute>"; };
+		786C18A250E50E18694571DB /* planetd */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; name = "planetd"; path = "planetd"; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
-		592F2167009074C81E9421C1 /* Frameworks */ = {
+		556C4ABC04CA26280FF939BE /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				67962BD73E1E60AA49BF2AAD /* Foundation.framework in Frameworks */,
-				783E6A9E5876685B37B77EF0 /* AppKit.framework in Frameworks */,
+				69622E43489428A728C2169A /* Foundation.framework in Frameworks */,
+				211305D7718C1FD563D33A68 /* AppKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		6134426D39E90D057D502347 /* planet */ = {
+		66744E8C50BA79015356627F /* planet */ = {
 			isa = PBXGroup;
 			children = (
-				38650D4D608A2C645AF464D4 /* build */,
-				455F02A208F32F8355D06BEF /* bundle */,
-				1A4A754922A71ADD5F1C4964 /* config */,
-				6F8B2AC10F10141B7F40789E /* include */,
-				2AE05EB01E4E35ED60CE193A /* src */,
-				1DA371736BF3279F71220F04 /* Frameworks */,
-				731C48137C1C51F32C674BCB /* Products */,
+				235944572E2D1C5C1C406BAA /* build */,
+				7D4A31D45976105F7B1331A8 /* bundle */,
+				382B381A39C543D61D263EF3 /* config */,
+				364E69752E7727B9670B2FF9 /* include */,
+				1AD064740B4B000D56A23171 /* src */,
+				7F7158797A4702667F905090 /* Frameworks */,
+				1C9451175A6D4A0E5EE808A1 /* Products */,
 			);
 			name = "planet";
 			sourceTree = "<group>";
 		};
-		38650D4D608A2C645AF464D4 /* build */ = {
+		235944572E2D1C5C1C406BAA /* build */ = {
 			isa = PBXGroup;
 			children = (
-				22394D0E7FE259D151BD7B86 /* premake4.lua */,
+				272E41AD4F1E4B0F4F25353C /* premake4.lua */,
 			);
 			name = "build";
 			sourceTree = "<group>";
 		};
-		455F02A208F32F8355D06BEF /* bundle */ = {
+		7D4A31D45976105F7B1331A8 /* bundle */ = {
 			isa = PBXGroup;
 			children = (
-				41E122A30D4D72DB41F37A19 /* orxBundleData.inc */,
+				1C1A6FEC7F89100E0815249C /* orxBundleData.inc */,
 			);
 			name = "bundle";
 			sourceTree = "<group>";
 		};
-		1A4A754922A71ADD5F1C4964 /* config */ = {
+		382B381A39C543D61D263EF3 /* config */ = {
 			isa = PBXGroup;
 			children = (
-				698E7050464422B942D81BB3 /* CreationTemplate.ini */,
-				34A53D9604166DF70DC71F86 /* ExtensionTemplate.ini */,
-				4BE55257794B37560D212919 /* SettingsTemplate.ini */,
-				3DA52FBA12E061F607FE3CD4 /* breeserif384.ini */,
-				0D7255921F3B6A0169941CF5 /* planet.ini */,
-				3B60597749A26582459A0F53 /* planetd.ini */,
-				30F476121F115319462135B0 /* planetp.ini */,
-				667867C02B8933BA34C665C9 /* web.ini */,
+				4D1C26972625590C31A70A08 /* CreationTemplate.ini */,
+				29E5125339FB452E75A87292 /* ExtensionTemplate.ini */,
+				60B07DB43CB2001863AC3D80 /* SettingsTemplate.ini */,
+				5CB701583F246EE91CF35461 /* breeserif384.ini */,
+				413F21151C4C46144E5738BA /* planet.ini */,
+				62435A0B21D932FB0D89223E /* planetd.ini */,
+				1F4A50775FE1423526344DCF /* planetp.ini */,
+				70F7709B778962C51782122E /* web.ini */,
 			);
 			name = "config";
 			sourceTree = "<group>";
 		};
-		6F8B2AC10F10141B7F40789E /* include */ = {
+		364E69752E7727B9670B2FF9 /* include */ = {
 			isa = PBXGroup;
 			children = (
-				518B1115249F58F759A03566 /* Object.h */,
-				75ED1D696CC463F2472D6BF4 /* extensions */,
-				6DC0033B41825AED1FAF2A97 /* planet.h */,
+				09BE3DCA55AE47CF0E7D68F9 /* Object.h */,
+				4B704F575F6366095F231925 /* extensions */,
+				7DAD0E591AB027C66707305E /* planet.h */,
 			);
 			name = "include";
 			sourceTree = "<group>";
 		};
-		75ED1D696CC463F2472D6BF4 /* extensions */ = {
+		4B704F575F6366095F231925 /* extensions */ = {
 			isa = PBXGroup;
 			children = (
-				17F3584E0F5133F72C715116 /* Scroll */,
-				0FE06CFB52D31BC274185546 /* lz4 */,
-				7CCC4C435B6033E307D36099 /* orxBundle.h */,
-				025F5A734ECA6C9F7A821AB9 /* orxExtensions.h */,
+				5F4A009F74E25EE142375056 /* Scroll */,
+				62AF08A04D3369C8580D7AB4 /* lz4 */,
+				49097A5B71BD5910624F58AE /* orxBundle.h */,
+				1EB443977B0F281E72426B52 /* orxExtensions.h */,
 			);
 			name = "extensions";
 			sourceTree = "<group>";
 		};
-		17F3584E0F5133F72C715116 /* Scroll */ = {
+		5F4A009F74E25EE142375056 /* Scroll */ = {
 			isa = PBXGroup;
 			children = (
-				1FC5639444F217AB72BE4860 /* Scroll.h */,
-				49AD011A62E768B770116F58 /* ScrollBase.h */,
-				06CA59773B3A021E36C96821 /* ScrollObject.h */,
+				777D6C3D2CAA6DFF062A6EB6 /* Scroll.h */,
+				0C1D58824B3D24D86A7327E5 /* ScrollBase.h */,
+				69A84948435327E27ACD2E14 /* ScrollObject.h */,
 			);
 			name = "Scroll";
 			sourceTree = "<group>";
 		};
-		0FE06CFB52D31BC274185546 /* lz4 */ = {
+		62AF08A04D3369C8580D7AB4 /* lz4 */ = {
 			isa = PBXGroup;
 			children = (
-				2307483B32C01811437752D1 /* lz4.h */,
-				33534F326ABA6A7F5AFE637A /* lz4hc.h */,
+				484429B32F5E753D2BD00FF3 /* lz4.h */,
+				1F606CD86B614DC544682925 /* lz4hc.h */,
 			);
 			name = "lz4";
 			sourceTree = "<group>";
 		};
-		2AE05EB01E4E35ED60CE193A /* src */ = {
+		1AD064740B4B000D56A23171 /* src */ = {
 			isa = PBXGroup;
 			children = (
-				33D9134954382CB412E510D9 /* Object.cpp */,
-				7252685A769015944C482ACF /* planet.cpp */,
+				20E012296D291EFC53F531B6 /* Object.cpp */,
+				117D264D254C3C0516993100 /* planet.cpp */,
 			);
 			name = "src";
 			sourceTree = "<group>";
 		};
-		1DA371736BF3279F71220F04 /* Frameworks */ = {
+		7F7158797A4702667F905090 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				669024DB4ED1296B32455FFB /* Foundation.framework */,
-				53BD4A3259FD184B791E3715 /* AppKit.framework */,
+				51587071387C6D687DBF1424 /* Foundation.framework */,
+				6FFF5A984A1F3AFC06ED6E55 /* AppKit.framework */,
 			);
 			name = "Frameworks";
 			sourceTree = "<group>";
 		};
-		731C48137C1C51F32C674BCB /* Products */ = {
+		1C9451175A6D4A0E5EE808A1 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				35D95D44484140F71FC01690 /* planetd */,
+				786C18A250E50E18694571DB /* planetd */,
 			);
 			name = "Products";
 			sourceTree = "<group>";
@@ -167,13 +167,13 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		69C649881AC12CEE50A90DD2 /* planet */ = {
+		716B30DF2D0B3EE81821307E /* planet */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 174B4E0A0730159F2B146351 /* Build configuration list for PBXNativeTarget "planet" */;
+			buildConfigurationList = 3DEA082810E472A077CA7A70 /* Build configuration list for PBXNativeTarget "planet" */;
 			buildPhases = (
-				6F211D492C017A3968E34566 /* Resources */,
-				36CA31800AA5120652184FA1 /* Sources */,
-				592F2167009074C81E9421C1 /* Frameworks */,
+				58365E5F5E357B8A5FCA02DA /* Resources */,
+				488B476370494C8E249610FD /* Sources */,
+				556C4ABC04CA26280FF939BE /* Frameworks */,
 				9607AE3710C85E8F00CD1376 /* Postbuild */,
 			);
 			buildRules = (
@@ -183,7 +183,7 @@
 			name = "planet";
 			productInstallPath = "$(HOME)/bin";
 			productName = "planet";
-			productReference = 35D95D44484140F71FC01690 /* planetd */;
+			productReference = 786C18A250E50E18694571DB /* planetd */;
 			productType = "com.apple.product-type.tool";
 		};
 /* End PBXNativeTarget section */
@@ -194,17 +194,17 @@
 			buildConfigurationList = 1DEB928908733DD80010E9CD /* Build configuration list for PBXProject "planet" */;
 			compatibilityVersion = "Xcode 3.2";
 			hasScannedForEncodings = 1;
-			mainGroup = 6134426D39E90D057D502347 /* planet */;
+			mainGroup = 66744E8C50BA79015356627F /* planet */;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				69C649881AC12CEE50A90DD2 /* planetd */,
+				716B30DF2D0B3EE81821307E /* planetd */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
-		6F211D492C017A3968E34566 /* Resources */ = {
+		58365E5F5E357B8A5FCA02DA /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -230,12 +230,12 @@
 		};
 /* End PBXShellScriptBuildPhase section */
 /* Begin PBXSourcesBuildPhase section */
-		36CA31800AA5120652184FA1 /* Sources */ = {
+		488B476370494C8E249610FD /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				30C97E9041C327AE2AE25C43 /* Object.cpp in Sources */,
-				318318875A65223F640C7E70 /* planet.cpp in Sources */,
+				55D1226474557CEB299D0FEB /* Object.cpp in Sources */,
+				1BC86CBF151006A6069679D4 /* planet.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -245,7 +245,7 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
-		67DE2D075C2F365E036C30E0 /* Debug 64-bit Universal */ = {
+		44E8163B7E6A7BB47D4A0A5D /* Debug 64-bit Universal */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
@@ -257,7 +257,7 @@
 			};
 			name = "Debug 64-bit Universal";
 		};
-		3DC44DAC0EA876C107D06BF4 /* Debug Native 64-bit */ = {
+		0F781F2B6B121C6003F3477C /* Debug Native 64-bit */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
@@ -269,7 +269,7 @@
 			};
 			name = "Debug Native 64-bit";
 		};
-		50232F721CCC246B07273A30 /* Profile 64-bit Universal */ = {
+		06276AF87D0C2BF8640B3303 /* Profile 64-bit Universal */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
@@ -281,7 +281,7 @@
 			};
 			name = "Profile 64-bit Universal";
 		};
-		65D03DDF1A82631D29106F3F /* Profile Native 64-bit */ = {
+		575955217503446F77EF1B68 /* Profile Native 64-bit */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
@@ -293,7 +293,7 @@
 			};
 			name = "Profile Native 64-bit";
 		};
-		5FB3741F48F3700F17FB04C1 /* Release 64-bit Universal */ = {
+		624C7C92136A18C35D7C25AC /* Release 64-bit Universal */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
@@ -305,7 +305,7 @@
 			};
 			name = "Release 64-bit Universal";
 		};
-		3991711C135A14EB55EC2BFB /* Release Native 64-bit */ = {
+		1954151C10852D6779B5091C /* Release Native 64-bit */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
@@ -317,7 +317,7 @@
 			};
 			name = "Release Native 64-bit";
 		};
-		75AD3912791411570CF20C6D /* Bundle 64-bit Universal */ = {
+		786611A03AE8026765EA6C30 /* Bundle 64-bit Universal */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
@@ -329,7 +329,7 @@
 			};
 			name = "Bundle 64-bit Universal";
 		};
-		7BF530592D885146593D48BA /* Bundle Native 64-bit */ = {
+		44BF77A17CB50B4F0620345D /* Bundle Native 64-bit */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
@@ -341,7 +341,7 @@
 			};
 			name = "Bundle Native 64-bit";
 		};
-		613F767A6413519005011185 /* Debug 64-bit Universal */ = {
+		62460733384402E52944469F /* Debug 64-bit Universal */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
@@ -385,7 +385,7 @@
 			};
 			name = "Debug 64-bit Universal";
 		};
-		059A49A31AA61D495B8D32B0 /* Debug Native 64-bit */ = {
+		3DD43455582447E92A8C522B /* Debug Native 64-bit */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ARCHS = "x86_64";
@@ -429,7 +429,7 @@
 			};
 			name = "Debug Native 64-bit";
 		};
-		38FE69034FB92DF563247055 /* Profile 64-bit Universal */ = {
+		0C014AB3640D4CDA2D0C724B /* Profile 64-bit Universal */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
@@ -474,7 +474,7 @@
 			};
 			name = "Profile 64-bit Universal";
 		};
-		49E9134F27B15875707B2E24 /* Profile Native 64-bit */ = {
+		59E1796E5AC947FA787906A7 /* Profile Native 64-bit */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ARCHS = "x86_64";
@@ -519,7 +519,7 @@
 			};
 			name = "Profile Native 64-bit";
 		};
-		50147AF77DF653BE18CA2F30 /* Release 64-bit Universal */ = {
+		6B262B136E721265250D3140 /* Release 64-bit Universal */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
@@ -561,7 +561,7 @@
 			};
 			name = "Release 64-bit Universal";
 		};
-		2AF16A7621C1187E0F26251E /* Release Native 64-bit */ = {
+		2091399170C330221B3C07D0 /* Release Native 64-bit */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ARCHS = "x86_64";
@@ -603,7 +603,7 @@
 			};
 			name = "Release Native 64-bit";
 		};
-		4E8933932CBB2A9F33F801CE /* Bundle 64-bit Universal */ = {
+		6A6714CB228D751943F261FB /* Bundle 64-bit Universal */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
@@ -645,7 +645,7 @@
 			};
 			name = "Bundle 64-bit Universal";
 		};
-		5061360F185A7E0B24C13761 /* Bundle Native 64-bit */ = {
+		066D169874B07E0450CA1112 /* Bundle Native 64-bit */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ARCHS = "x86_64";
@@ -690,17 +690,17 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		174B4E0A0730159F2B146351 /* Build configuration list for PBXNativeTarget "planetd" */ = {
+		3DEA082810E472A077CA7A70 /* Build configuration list for PBXNativeTarget "planetd" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				67DE2D075C2F365E036C30E0 /* Debug 64-bit Universal */,
-				3DC44DAC0EA876C107D06BF4 /* Debug Native 64-bit */,
-				50232F721CCC246B07273A30 /* Profile 64-bit Universal */,
-				65D03DDF1A82631D29106F3F /* Profile Native 64-bit */,
-				5FB3741F48F3700F17FB04C1 /* Release 64-bit Universal */,
-				3991711C135A14EB55EC2BFB /* Release Native 64-bit */,
-				75AD3912791411570CF20C6D /* Bundle 64-bit Universal */,
-				7BF530592D885146593D48BA /* Bundle Native 64-bit */,
+				44E8163B7E6A7BB47D4A0A5D /* Debug 64-bit Universal */,
+				0F781F2B6B121C6003F3477C /* Debug Native 64-bit */,
+				06276AF87D0C2BF8640B3303 /* Profile 64-bit Universal */,
+				575955217503446F77EF1B68 /* Profile Native 64-bit */,
+				624C7C92136A18C35D7C25AC /* Release 64-bit Universal */,
+				1954151C10852D6779B5091C /* Release Native 64-bit */,
+				786611A03AE8026765EA6C30 /* Bundle 64-bit Universal */,
+				44BF77A17CB50B4F0620345D /* Bundle Native 64-bit */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = "Debug 64-bit Universal";
@@ -708,14 +708,14 @@
 		1DEB928908733DD80010E9CD /* Build configuration list for PBXProject "planet" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				613F767A6413519005011185 /* Debug 64-bit Universal */,
-				059A49A31AA61D495B8D32B0 /* Debug Native 64-bit */,
-				38FE69034FB92DF563247055 /* Profile 64-bit Universal */,
-				49E9134F27B15875707B2E24 /* Profile Native 64-bit */,
-				50147AF77DF653BE18CA2F30 /* Release 64-bit Universal */,
-				2AF16A7621C1187E0F26251E /* Release Native 64-bit */,
-				4E8933932CBB2A9F33F801CE /* Bundle 64-bit Universal */,
-				5061360F185A7E0B24C13761 /* Bundle Native 64-bit */,
+				62460733384402E52944469F /* Debug 64-bit Universal */,
+				3DD43455582447E92A8C522B /* Debug Native 64-bit */,
+				0C014AB3640D4CDA2D0C724B /* Profile 64-bit Universal */,
+				59E1796E5AC947FA787906A7 /* Profile Native 64-bit */,
+				6B262B136E721265250D3140 /* Release 64-bit Universal */,
+				2091399170C330221B3C07D0 /* Release Native 64-bit */,
+				6A6714CB228D751943F261FB /* Bundle 64-bit Universal */,
+				066D169874B07E0450CA1112 /* Bundle Native 64-bit */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = "Debug 64-bit Universal";

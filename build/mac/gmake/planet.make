@@ -215,16 +215,17 @@ ifeq ($(config),debugweb)
   CC         = emcc
   CXX        = em++
   AR         = emar
+  RESCOMP    = :
   OBJDIR     = obj/Web/Debug
   TARGETDIR  = ../../../bin/web
-  TARGET     = $(TARGETDIR)/planet.html
+  TARGET     = $(TARGETDIR)/planet.js
   DEFINES   += -D__orxDEBUG__
   INCLUDES  += -I$(ORX)/include -I../../../include/extensions -I../../../include
   ALL_CPPFLAGS  += $(CPPFLAGS) -MMD -MP $(DEFINES) $(INCLUDES)
   ALL_CFLAGS    += $(CFLAGS) $(ALL_CPPFLAGS) -ffast-math -g -DorxWEB_EXECUTABLE_NAME='"planet.wasm"' -pthread
   ALL_CXXFLAGS  += $(CXXFLAGS) $(ALL_CFLAGS) -fno-exceptions
   ALL_RESFLAGS  += $(RESFLAGS) $(DEFINES) $(INCLUDES)
-  ALL_LDFLAGS   += $(LDFLAGS) -L$(ORX)/lib/static/web -L$(ORX)/../extern/emscripten-glfw/lib -L$(ORX)/../extern/basisu/lib/web -L$(ORX)/../extern/libwebp/lib/web -L$(ORX)/../extern/LiquidFun-1.1.0/lib/web -L. --preload-file ../../../build/planet.obr@/ -sPTHREAD_POOL_SIZE=navigator.hardwareConcurrency -sAUDIO_WORKLET=1 -sWASM_WORKERS=1 -sASYNCIFY -sALLOW_MEMORY_GROWTH -sFULL_ES3=1 -pthread -lidbfs.js $(ORX)/../extern/emscripten-glfw/lib/libglfw3.a --js-library $(ORX)/../extern/emscripten-glfw/lib/lib_emscripten_glfw3.js -gsource-map
+  ALL_LDFLAGS   += $(LDFLAGS) -L$(ORX)/lib/static/web -L$(ORX)/../extern/emscripten-glfw/lib -L$(ORX)/../extern/basisu/lib/web -L$(ORX)/../extern/libwebp/lib/web -L$(ORX)/../extern/LiquidFun-1.1.0/lib/web -L. --preload-file ../../../build/planet.obr@/ -sPTHREAD_POOL_SIZE=navigator.hardwareConcurrency -sAUDIO_WORKLET=1 -sWASM_WORKERS=1 -sSTACK_SIZE=1048576 -sASYNCIFY -sALLOW_MEMORY_GROWTH -sFULL_ES3=1 -pthread -lidbfs.js $(ORX)/../extern/emscripten-glfw/lib/libglfw3.a --js-library $(ORX)/../extern/emscripten-glfw/lib/lib_emscripten_glfw3.js -gsource-map
   LIBS      += -lorxd -lbasisu -lwebpdecoder -lliquidfun
   LDDEPS    +=
   LINKCMD    = $(CXX) -o $(TARGET) $(OBJECTS) $(ALL_LDFLAGS) $(LIBS)
@@ -244,16 +245,17 @@ ifeq ($(config),profileweb)
   CC         = emcc
   CXX        = em++
   AR         = emar
+  RESCOMP    = :
   OBJDIR     = obj/Web/Profile
   TARGETDIR  = ../../../bin/web
-  TARGET     = $(TARGETDIR)/planet.html
+  TARGET     = $(TARGETDIR)/planet.js
   DEFINES   += -D__orxPROFILER__
   INCLUDES  += -I$(ORX)/include -I../../../include/extensions -I../../../include
   ALL_CPPFLAGS  += $(CPPFLAGS) -MMD -MP $(DEFINES) $(INCLUDES)
   ALL_CFLAGS    += $(CFLAGS) $(ALL_CPPFLAGS) -ffast-math -g -O2 -DorxWEB_EXECUTABLE_NAME='"planet.wasm"' -pthread
   ALL_CXXFLAGS  += $(CXXFLAGS) $(ALL_CFLAGS) -fno-exceptions -fno-rtti
   ALL_RESFLAGS  += $(RESFLAGS) $(DEFINES) $(INCLUDES)
-  ALL_LDFLAGS   += $(LDFLAGS) -L$(ORX)/lib/static/web -L$(ORX)/../extern/emscripten-glfw/lib -L$(ORX)/../extern/basisu/lib/web -L$(ORX)/../extern/libwebp/lib/web -L$(ORX)/../extern/LiquidFun-1.1.0/lib/web -L. --preload-file ../../../build/planet.obr@/ -sPTHREAD_POOL_SIZE=navigator.hardwareConcurrency -sAUDIO_WORKLET=1 -sWASM_WORKERS=1 -sASYNCIFY -sALLOW_MEMORY_GROWTH -sFULL_ES3=1 -pthread -lidbfs.js $(ORX)/../extern/emscripten-glfw/lib/libglfw3.a --js-library $(ORX)/../extern/emscripten-glfw/lib/lib_emscripten_glfw3.js -O2
+  ALL_LDFLAGS   += $(LDFLAGS) -L$(ORX)/lib/static/web -L$(ORX)/../extern/emscripten-glfw/lib -L$(ORX)/../extern/basisu/lib/web -L$(ORX)/../extern/libwebp/lib/web -L$(ORX)/../extern/LiquidFun-1.1.0/lib/web -L. --preload-file ../../../build/planet.obr@/ -sPTHREAD_POOL_SIZE=navigator.hardwareConcurrency -sAUDIO_WORKLET=1 -sWASM_WORKERS=1 -sSTACK_SIZE=1048576 -sASYNCIFY -sALLOW_MEMORY_GROWTH -sFULL_ES3=1 -pthread -lidbfs.js $(ORX)/../extern/emscripten-glfw/lib/libglfw3.a --js-library $(ORX)/../extern/emscripten-glfw/lib/lib_emscripten_glfw3.js -O2
   LIBS      += -lorxp -lbasisu -lwebpdecoder -lliquidfun
   LDDEPS    +=
   LINKCMD    = $(CXX) -o $(TARGET) $(OBJECTS) $(ALL_LDFLAGS) $(LIBS)
@@ -273,16 +275,17 @@ ifeq ($(config),releaseweb)
   CC         = emcc
   CXX        = em++
   AR         = emar
+  RESCOMP    = :
   OBJDIR     = obj/Web/Release
   TARGETDIR  = ../../../bin/web
-  TARGET     = $(TARGETDIR)/planet.html
+  TARGET     = $(TARGETDIR)/planet.js
   DEFINES   +=
   INCLUDES  += -I$(ORX)/include -I../../../include/extensions -I../../../include
   ALL_CPPFLAGS  += $(CPPFLAGS) -MMD -MP $(DEFINES) $(INCLUDES)
   ALL_CFLAGS    += $(CFLAGS) $(ALL_CPPFLAGS) -ffast-math -g -O2 -DorxWEB_EXECUTABLE_NAME='"planet.wasm"' -pthread
   ALL_CXXFLAGS  += $(CXXFLAGS) $(ALL_CFLAGS) -fno-exceptions -fno-rtti
   ALL_RESFLAGS  += $(RESFLAGS) $(DEFINES) $(INCLUDES)
-  ALL_LDFLAGS   += $(LDFLAGS) -L$(ORX)/lib/static/web -L$(ORX)/../extern/emscripten-glfw/lib -L$(ORX)/../extern/basisu/lib/web -L$(ORX)/../extern/libwebp/lib/web -L$(ORX)/../extern/LiquidFun-1.1.0/lib/web -L. --preload-file ../../../build/planet.obr@/ -sPTHREAD_POOL_SIZE=navigator.hardwareConcurrency -sAUDIO_WORKLET=1 -sWASM_WORKERS=1 -sASYNCIFY -sALLOW_MEMORY_GROWTH -sFULL_ES3=1 -pthread -lidbfs.js $(ORX)/../extern/emscripten-glfw/lib/libglfw3.a --js-library $(ORX)/../extern/emscripten-glfw/lib/lib_emscripten_glfw3.js -O2
+  ALL_LDFLAGS   += $(LDFLAGS) -L$(ORX)/lib/static/web -L$(ORX)/../extern/emscripten-glfw/lib -L$(ORX)/../extern/basisu/lib/web -L$(ORX)/../extern/libwebp/lib/web -L$(ORX)/../extern/LiquidFun-1.1.0/lib/web -L. --preload-file ../../../build/planet.obr@/ -sPTHREAD_POOL_SIZE=navigator.hardwareConcurrency -sAUDIO_WORKLET=1 -sWASM_WORKERS=1 -sSTACK_SIZE=1048576 -sASYNCIFY -sALLOW_MEMORY_GROWTH -sFULL_ES3=1 -pthread -lidbfs.js $(ORX)/../extern/emscripten-glfw/lib/libglfw3.a --js-library $(ORX)/../extern/emscripten-glfw/lib/lib_emscripten_glfw3.js -O2
   LIBS      += -lorx -lbasisu -lwebpdecoder -lliquidfun
   LDDEPS    +=
   LINKCMD    = $(CXX) -o $(TARGET) $(OBJECTS) $(ALL_LDFLAGS) $(LIBS)
@@ -302,16 +305,17 @@ ifeq ($(config),bundleweb)
   CC         = emcc
   CXX        = em++
   AR         = emar
+  RESCOMP    = :
   OBJDIR     = obj/Web/Bundle
   TARGETDIR  = ../../../bin/web
-  TARGET     = $(TARGETDIR)/planet.html
+  TARGET     = $(TARGETDIR)/planet.js
   DEFINES   +=
   INCLUDES  += -I$(ORX)/include -I../../../include/extensions -I../../../include
   ALL_CPPFLAGS  += $(CPPFLAGS) -MMD -MP $(DEFINES) $(INCLUDES)
   ALL_CFLAGS    += $(CFLAGS) $(ALL_CPPFLAGS) -ffast-math -g -O2 -DorxWEB_EXECUTABLE_NAME='"planet.wasm"' -pthread
   ALL_CXXFLAGS  += $(CXXFLAGS) $(ALL_CFLAGS) -fno-exceptions -fno-rtti
   ALL_RESFLAGS  += $(RESFLAGS) $(DEFINES) $(INCLUDES)
-  ALL_LDFLAGS   += $(LDFLAGS) -L$(ORX)/lib/static/web -L$(ORX)/../extern/emscripten-glfw/lib -L$(ORX)/../extern/basisu/lib/web -L$(ORX)/../extern/libwebp/lib/web -L$(ORX)/../extern/LiquidFun-1.1.0/lib/web -L. --preload-file ../../../build/planet.obr@/ -sPTHREAD_POOL_SIZE=navigator.hardwareConcurrency -sAUDIO_WORKLET=1 -sWASM_WORKERS=1 -sASYNCIFY -sALLOW_MEMORY_GROWTH -sFULL_ES3=1 -pthread -lidbfs.js $(ORX)/../extern/emscripten-glfw/lib/libglfw3.a --js-library $(ORX)/../extern/emscripten-glfw/lib/lib_emscripten_glfw3.js
+  ALL_LDFLAGS   += $(LDFLAGS) -L$(ORX)/lib/static/web -L$(ORX)/../extern/emscripten-glfw/lib -L$(ORX)/../extern/basisu/lib/web -L$(ORX)/../extern/libwebp/lib/web -L$(ORX)/../extern/LiquidFun-1.1.0/lib/web -L. --preload-file ../../../build/planet.obr@/ -sPTHREAD_POOL_SIZE=navigator.hardwareConcurrency -sAUDIO_WORKLET=1 -sWASM_WORKERS=1 -sSTACK_SIZE=1048576 -sASYNCIFY -sALLOW_MEMORY_GROWTH -sFULL_ES3=1 -pthread -lidbfs.js $(ORX)/../extern/emscripten-glfw/lib/libglfw3.a --js-library $(ORX)/../extern/emscripten-glfw/lib/lib_emscripten_glfw3.js
   LIBS      += -lorx -lbasisu -lwebpdecoder -lliquidfun
   LDDEPS    +=
   LINKCMD    = $(CXX) -o $(TARGET) $(OBJECTS) $(ALL_LDFLAGS) $(LIBS)
